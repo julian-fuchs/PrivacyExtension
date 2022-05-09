@@ -1,0 +1,17 @@
+{
+    "name": "PrivacyExtension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_icon": "img/logo-128x128.png",
+        "action_title": "PrivacyExtension",
+        "default_popup": "popup.html"
+    },
+    "description": "Awesome privacy extension for Chromium to keep YOU safe on the dangerous Web.",
+    "icons": {
+        "128": "img/logo-128x128.png",
+        "16": "img/logo-16x16.png",
+        "48": "img/logo-32x32.png"
+    },
+    "permissions": ["tabs", "privacy", "cookies", "browsingData", "webRequest", "storage"]
+}

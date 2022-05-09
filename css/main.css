@@ -1,0 +1,49 @@
+body {
+    min-width: 500px;
+    max-width: 500px;
+    min-height: 400px;
+    background: #333333;
+    color: white;
+}
+
+td, th {
+    text-align: center;
+}
+
+.circle {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    background: #639754;
+    border: 1px solid #000;
+    color: white;
+    text-align: center;
+    font: 60px Arial, sans-serif;
+    line-height: 180px;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #555555;
+    color: white;
+    border: none;
+    border-radius: 0px;
+}
+
+.nav-tabs .nav-link {
+    color: white;
+    background-color: #333333;
+    border: none;
+    border-radius: 0px;
+}
+
+.nav-tabs .nav-link:hover {
+    background-color: #777777;
+    color: white;
+    border: none;
+    border-radius: 0px;
+}
+
+.checkbox-center {
+    margin-left: 40px;
+}
