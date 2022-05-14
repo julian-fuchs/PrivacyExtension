@@ -1,7 +1,7 @@
 body {
     min-width: 500px;
     max-width: 500px;
-    min-height: 400px;
+    min-height: 500px;
     background: #333333;
     color: white;
 }
@@ -47,3 +47,9 @@ td, th {
 .checkbox-center {
     margin-left: 40px;
 }
+
+.grade-a {
+    /* TODO - color for circle grade a - f */
+}
+
+/* TODO: fix overflow */
