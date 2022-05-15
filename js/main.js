@@ -64,16 +64,14 @@ function addCheckboxListener() {
 async function loadSettings() {
     console.log('loading settings')
     let keys = Object.keys(chrome_config);
-    console.log(keys);
     for(var [idx, category_name] of keys.entries()) {
-        console.log(idx, category_name);
         addSettingCategory(category_name, (idx === 0));
         var category = chrome_config[category_name];
         for( var setting in category) {
-            let setting_config = category[setting];
+            let settingConfig = category[setting];
             let value = await getSetting(category_name, setting);
-            let isRecValue = value !== setting_config.recommendedValue;
-            addSetting(category_name, setting, value, (isRecValue) ? 'none' : setting_config.warningLevel);
+            let isRecValue = value !== settingConfig.recommendedValue;
+            addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
         }
     };
     addCheckboxListener();
@@ -94,5 +92,12 @@ $(function() {
     loadInfo();
     loadSettings();
     addLinkToWebsiteTab();
+    // TODO: trigger 'click' doesnt seem to work
+    // only hover is fine or need to investigate
+    $('[data-toggle-bs="tooltip"]').tooltip({
+      animated: 'fade',
+      placement: 'bottom',
+      trigger: 'click hover focus'
+    });
 });
 

@@ -1,96 +1,96 @@
 const chrome_config = {
     network: {
         networkPredictionEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         webRTCIPHandlingPolicy: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         }
     },
     services: {
         alternateErrorPagesEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillAddressEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillCreditCardEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         passwordSavingEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         safeBrowsingEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         safeBrowsingExtendedReportingEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         searchSuggestEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         spellingServiceEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         translationServiceEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         }
     },
     websites: {
         doNotTrackEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         hyperlinkAuditingEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         privacySandboxEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         protectedContentEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         referrersEnabled: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         },
         thirdPartyCookiesAllowed: {
-            info: '',
+            info: 'import setting, why - no one knows',
             recommendedValue: false,
             warningLevel: 'high'
         }
@@ -100,39 +100,39 @@ const chrome_config = {
 const security_headers = {
     "x-frame-options": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "x-xss-protection": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "content-security-policy": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "strict-transport-security": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "x-content-type-options": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "x-permitted-cross-domain-policies": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "referrer-policy": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "expect-ct": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     },
     "feature-policy": {
         warningLevel: 'high',
-        info: ''
+        info: 'important header, should always set'
     }
 };
 

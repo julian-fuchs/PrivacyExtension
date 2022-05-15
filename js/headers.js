@@ -1,8 +1,7 @@
 function verifyHeader(domain, url) {
     chrome.storage.local.get([`${domain}-header`], data => {
-        console.log('get header');
-        console.log(data);
         if (typeof data[`${domain}-header`] === 'undefined') {
+            console.log(`header for ${domain} not storage - fetching header`)
             getHeaders(url, (headerMap) => {
                 checkHeader(headerMap);
                 chrome.storage.local.set({[`${domain}-header`]: {header: headerMap}}, () => {
@@ -10,6 +9,7 @@ function verifyHeader(domain, url) {
                 });
             });
         } else {
+            console.log(`found header for ${domain} in storage`)
             let headerMap = data[`${domain}-header`].header;
             checkHeader(headerMap);
         }
@@ -19,7 +19,7 @@ function verifyHeader(domain, url) {
 function checkHeader(headerMap) {
     for(const [header, setting] of Object.entries(security_headers)) {
         if (header in headerMap) {
-            addOkIssue(`found header ${header}`);
+            addOkIssue(`found header ${header}`, setting.info);
         } else {
             addIssue(`missing header ${header}`, setting.warningLevel, setting.info);
         }
@@ -36,7 +36,6 @@ function getHeaders(url, callback) {
             console.log(responseHeaders);
             let headerMap = getHeaderArray(responseHeaders);
             callback(headerMap);
-            // save to chrome.storage.local
         },
         error: (request, textStatus, error) => {
             console.log(`failed to verify header for ${url} - ${textStatus} - ${error}`);

@@ -12,12 +12,12 @@ function addSettingCategory(name, first=false) {
     container.append(tbody);
 }
 
-function addSetting(category, name, state, recommendation) {
+function addSetting(category, name, state, recommendation, info) {
     let container = $(`#setting-container > tbody.${category}-settings`)
     let row = $('<tr></tr>');
     let name_col = $(`<td class="text-start">${category}.${name}</td>`);
     row.append(name_col);
-    let info_col = $('<td><i class="bi bi-info-circle"></i></td>');
+    let info_col = $(`<td><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></td>`);
     row.append(info_col);
     let state_col = $(`<td><div class="form-check form-switch checkbox-center">\
                        <input class="form-check-input chrome-setting-checkbox" type="checkbox" role="switch" \
@@ -49,16 +49,16 @@ const symbols = {
     circle: "bi-check-circle",
     info: "bi-info-circle"
 }
-function addOkIssue(name) {
-    addIssue(name, "none", false)
+function addOkIssue(name, info) {
+    addIssue(name, "none", info)
 }
 
-function addIssue(name, severity, fix) {
+function addIssue(name, severity, info) {
     let container = $('#issue-list');
     let row = $('<tr></tr>');
     let issue = $(`<td class="text-start">${name}</td>`);
     let severity_elem = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
-    let fix_elem = $(`<th><i class="bi bi-info-circle"></i></th>`);
+    let fix_elem = $(`<th><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></th>`);
     row.append(issue);
     row.append(severity_elem);
     row.append(fix_elem);
