@@ -22,7 +22,6 @@ function loadGrade(domain) {
     });
 }
 
-
 function loadInfo() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         var activeTab = tabs[0];
@@ -75,7 +74,6 @@ async function loadSettings() {
         }
     };
     addCheckboxListener();
-    
 }
 
 function addLinkToWebsiteTab() {
@@ -100,4 +98,3 @@ $(function() {
       trigger: 'click hover focus'
     });
 });
-

@@ -49,6 +49,7 @@ const symbols = {
     circle: "bi-check-circle",
     info: "bi-info-circle"
 }
+
 function addOkIssue(name, info) {
     addIssue(name, "none", info)
 }

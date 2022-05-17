@@ -1,96 +1,96 @@
 const chrome_config = {
     network: {
         networkPredictionEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'During startup and browsing domain names are getting pre-resolved. This ranges from sites you currently visit to pages you might look up later, or some of the suggested URL while typing. Therefore your browsing habbits are getting passed as information.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         webRTCIPHandlingPolicy: {
-            info: 'import setting, why - no one knows',
+            info: 'WebRTC helps with the real-time-communication, but is known for leaking your local address depending on usage. Therefore use it with caution.',
             recommendedValue: false,
             warningLevel: 'high'
         }
     },
     services: {
         alternateErrorPagesEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Chrome switches the visited-side error page with its own. Why would you need that?',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillAddressEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Chrome saves the sides you visited, also possible usernames etc. That is a lot of data about you.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Chrome saves information about form data, for example shipping/login-information etc. Hence if you login somewhere Chrome takes notice of this.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillCreditCardEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Chrome has knowledge about your credit card, but uses an "alias" to keep your data hidden.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         passwordSavingEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Using a password manager is not a bad idea, but Chrome will store those in an unsafe way. Use a commercial password manager that encrypts your data!',
             recommendedValue: false,
             warningLevel: 'high'
         },
         safeBrowsingEnabled: {
-            info: 'import setting, why - no one knows',
-            recommendedValue: false,
+            info: 'The website you visit is being screened by chrome if it\'s malicious.',
+            recommendedValue: true,
             warningLevel: 'high'
         },
         safeBrowsingExtendedReportingEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Chrome sends Google information about pages it blocked for you.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         searchSuggestEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Your search habits are getting evaluated by Omnibox, a tool from Google.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         spellingServiceEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'The third party AI webservice Sapling checks your writing. ',
             recommendedValue: false,
             warningLevel: 'high'
         },
         translationServiceEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Bablic translates your webpages and saves those.',
             recommendedValue: false,
             warningLevel: 'high'
         }
     },
     websites: {
         doNotTrackEnabled: {
-            info: 'import setting, why - no one knows',
-            recommendedValue: false,
+            info: 'It sends a request to the visited side asking to no track you. It doesn\'t prohibit tracking.',
+            recommendedValue: true,
             warningLevel: 'high'
         },
         hyperlinkAuditingEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'This service tracks link klicks on sites.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         privacySandboxEnabled: {
-            info: 'import setting, why - no one knows',
-            recommendedValue: false,
+            info: 'New feature of Chrome to improve privacy by acting as the third-party cookie. So third-party cookies of websites are replaced. ',
+            recommendedValue: true,
             warningLevel: 'high'
         },
         protectedContentEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'With this you can view protected content.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         referrersEnabled: {
-            info: 'import setting, why - no one knows',
+            info: 'Sends referer headers with your request.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         thirdPartyCookiesAllowed: {
-            info: 'import setting, why - no one knows',
+            info: 'Blocks sites you visit from directly giving you third-party cookies.',
             recommendedValue: false,
             warningLevel: 'high'
         }
