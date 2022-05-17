@@ -71,4 +71,13 @@ td, th {
     background: #363636;
 }
 
+#view-details {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#view-details:hover {
+    text-decoration: underline;
+}
+
 /* TODO: fix overflow */

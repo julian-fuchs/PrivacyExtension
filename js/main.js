@@ -2,6 +2,7 @@ function loadGrade(domain) {
     chrome.storage.local.get([domain], data => {
         if (typeof data[domain] !== 'undefined') {
             $('.grade').text(data[domain].rating.letter);
+            document.getElementById("circle").className = "circle" + ` grade-${data[domain].rating.letter.toLowerCase()}`;
             $('.tab-name').text(data[domain].name);
         } else {
             $.get(`https://api.tosdr.org/search/v4/?query=${domain}`, function( response ) {
