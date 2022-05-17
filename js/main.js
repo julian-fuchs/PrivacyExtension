@@ -13,11 +13,11 @@ function loadGrade(domain) {
                 var name = service.name;
                 var rating = service.rating;
                 $('.grade').text(rating.letter);
-                $('.grade').addClass(`grade-${rating.letter.toLowerCase()}`)
+                document.getElementById("circle").className = "circle" + ` grade-${rating.letter.toLowerCase()}`;
                 chrome.storage.local.set({[domain]: {name: name, rating: rating}}, function() {
                     console.log(`saved ${domain} - ${rating.letter}`);
                 });
-            }); 
+            });
         }
     });
 }
@@ -27,13 +27,17 @@ function loadInfo() {
         var activeTab = tabs[0];
         var url = new URL(activeTab.url);
         var domain = url.hostname;
-        domain = domain.match(/[^\.]*\.[^.]*$/)[0];
-        console.log(domain)
-        $('.tab-name').text(domain);
-        loadGrade(domain);
-        verifyHeader(domain, url);
-        verifyCookies(domain);
-     });
+        if (/[^\.]*\.[^.]*$/.test(domain)) {
+            domain = domain.match(/[^\.]*\.[^.]*$/)[0];
+            console.log(domain);
+            $('.tab-name').text(domain);
+            loadGrade(domain);
+            verifyHeader(domain, url);
+            verifyCookies(domain);
+        } else {
+            $('.tab-name').text('No website found');
+        }
+    });
 }
 
 const getSetting = async (category, name) => {
@@ -53,7 +57,7 @@ function addCheckboxListener() {
         let target = $(event.target);
         let category = target.attr('data-category');
         let setting = target.attr('data-setting');
-        let value = target.is( ":checked" );
+        let value = target.is(':checked');
         chrome.privacy[category][setting].set({value: value}, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
         });
@@ -61,7 +65,7 @@ function addCheckboxListener() {
 }
 
 async function loadSettings() {
-    console.log('loading settings')
+    console.log('loading settings');
     let keys = Object.keys(chrome_config);
     for(var [idx, category_name] of keys.entries()) {
         addSettingCategory(category_name, (idx === 0));
@@ -72,13 +76,13 @@ async function loadSettings() {
             let isRecValue = value !== settingConfig.recommendedValue;
             addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
         }
-    };
+    }
     addCheckboxListener();
 }
 
 function addLinkToWebsiteTab() {
     $('#view-details').click((event) => {
-        event.preventDefault()
+        event.preventDefault();
         $('.tab-content > .tab-pane.active').removeClass('active');
         $('#tablist > .nav-link.active').removeClass('active');
         $('#website').addClass('active');

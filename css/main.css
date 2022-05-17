@@ -15,7 +15,6 @@ td, th {
     width: 200px;
     height: 200px;
     padding: 10px;
-    background: #639754;
     border: 1px solid #000;
     color: white;
     text-align: center;
@@ -49,7 +48,27 @@ td, th {
 }
 
 .grade-a {
-    /* TODO - color for circle grade a - f */
+    background: #198754;
+}
+
+.grade-b {
+    background: #79B752;
+}
+
+.grade-c {
+    background: #FFC107;
+}
+
+.grade-d {
+    background: #D66F2C;
+}
+
+.grade-e {
+    background: #DC3545;
+}
+
+.grade-f {
+    background: #363636;
 }
 
 /* TODO: fix overflow */
