@@ -10,14 +10,14 @@ function verifyHeader(domain, url) {
             });
         } else {
             console.log(`found header for ${domain} in storage`)
-            let headerMap = data[`${domain}-header`].header;
+            const headerMap = data[`${domain}-header`].header;
             checkHeader(headerMap);
         }
     });
 }
 
 function checkHeader(headerMap) {
-    for(const [header, setting] of Object.entries(security_headers)) {
+    for(const [header, setting] of Object.entries(securityHeaders)) {
         if (header in headerMap) {
             addOkIssue(`found header ${header}`, setting.info);
         } else {
@@ -32,8 +32,8 @@ function getHeaders(url, callback) {
         type: 'GET',
         url: url,
         success: (data, textStatus, request) => {
-            var responseHeaders = request.getAllResponseHeaders();
-            let headerMap = getHeaderArray(responseHeaders);
+            const responseHeaders = request.getAllResponseHeaders();
+            const headerMap = getHeaderArray(responseHeaders);
             callback(headerMap);
         },
         error: (request, textStatus, error) => {
@@ -44,13 +44,13 @@ function getHeaders(url, callback) {
 
 function getHeaderArray(responseHeaders) {
     // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders
-    var arr = responseHeaders.trim().split(/[\r\n]+/);
-    var headerMap = {};
+    const arr = responseHeaders.trim().split(/[\r\n]+/);
+    const headerMap = {};
     arr.forEach(function (line) {
-      var parts = line.split(': ');
-      var header = parts.shift();
-      var value = parts.join(': ');
-      headerMap[header] = value;
+        const parts = line.split(': ');
+        const header = parts.shift();
+        const value = parts.join(': ');
+        headerMap[header] = value;
     });
     return headerMap;
 }

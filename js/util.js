@@ -3,12 +3,12 @@ function capitalizeFirstLetter(string) {
 }
 
 function addSettingCategory(name, first=false) {
-    let col_names = ['', 'Status', 'REC'];
-    let container = $('#setting-container');
-    let thead = $('<thead></thead>');
-    let th = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
-    thead.append(th);
-    col_names.forEach((item, _) => {
+    const colNames = ['', 'Status', 'REC'];
+    const container = $('#setting-container');
+    const thead = $('<thead></thead>');
+    const thCol = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
+    thead.append(thCol);
+    colNames.forEach((item, _) => {
         thead.append($(`<th>${(first) ? item : ""}</th>`));
     });
     container.append(thead);
@@ -17,20 +17,20 @@ function addSettingCategory(name, first=false) {
 }
 
 function addSetting(category, name, state, recommendation, info) {
-    let container = $(`#setting-container > tbody.${category}-settings`)
-    let row = $('<tr></tr>');
-    let name_col = $(`<td class="text-start">${category}.${name}</td>`);
-    row.append(name_col);
-    let info_col = $(`<td><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></td>`);
-    row.append(info_col);
-    let state_col = $(`<td><div class="form-check form-switch checkbox-center">\
+    const container = $(`#setting-container > tbody.${category}-settings`)
+    const row = $('<tr></tr>');
+    const nameCol = $(`<td class="text-start">${category}.${name}</td>`);
+    row.append(nameCol);
+    const infoCol = $(`<td><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></td>`);
+    row.append(infoCol);
+    const stateCol = $(`<td><div class="form-check form-switch checkbox-center">\
                        <input class="form-check-input chrome-setting-checkbox" type="checkbox" role="switch" \
                        data-category="${category}" data-setting="${name}" id="checkbox-${name}" ${(state) ? "checked" : ""}>\
                        </div></td>`);
-    row.append(state_col);
+    row.append(stateCol);
 
-    let rec_col = $(`<td><span class="${severityToColor[recommendation]}" id="emoji-${name}"><i class="bi ${severityToEmoji[recommendation]}"></i></span></td>`);
-    row.append(rec_col);
+    const recCol = $(`<td><span class="${severityToColor[recommendation]}" id="emoji-${name}"><i class="bi ${severityToEmoji[recommendation]}"></i></span></td>`);
+    row.append(recCol);
 
     container.append(row);
 }
@@ -54,13 +54,13 @@ function addOkIssue(name, info) {
 }
 
 function addIssue(name, severity, info) {
-    let container = $('#issue-list');
-    let row = $('<tr></tr>');
-    let issue = $(`<td class="text-start">${name}</td>`);
-    let severity_elem = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
-    let fix_elem = $(`<th><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></th>`);
-    row.append(issue);
-    row.append(severity_elem);
-    row.append(fix_elem);
+    const container = $('#issue-list');
+    const row = $('<tr></tr>');
+    const issueCol = $(`<td class="text-start">${name}</td>`);
+    const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
+    const infoCol = $(`<th><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></th>`);
+    row.append(issueCol);
+    row.append(statusCol);
+    row.append(infoCol);
     container.append(row);
 }

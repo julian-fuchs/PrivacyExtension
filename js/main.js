@@ -23,8 +23,8 @@ function loadGrade(domain) {
                     console.log('website not found');
                     return;
                 }
-                var service = response.parameters.services[0];
-                var data = {name: service.name, rating: service.rating};
+                let service = response.parameters.services[0];
+                let data = {name: service.name, rating: service.rating};
                 setGrade(data);
                 chrome.storage.local.set({[domain]: data}, function() {
                     console.log(`saved ${domain} - ${service.rating.letter}`);
@@ -36,9 +36,9 @@ function loadGrade(domain) {
 
 function loadInfo() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        var activeTab = tabs[0];
-        var url = new URL(activeTab.url);
-        var domain = url.hostname;
+        let activeTab = tabs[0];
+        let url = new URL(activeTab.url);
+        let domain = url.hostname;
         if (/[^\.]*\.[^.]*$/.test(domain)) {
             domain = domain.match(/[^\.]*\.[^.]*$/)[0];
             console.log(domain);
@@ -65,7 +65,7 @@ const getSetting = async (category, name) => {
 }
 
 function toggleEmoji(selector, category, name, value) {
-    let setting = chrome_config[category][name];
+    let setting = chromeConfig[category][name];
     const isRec = setting.recommendedValue === value;
     const severity = (isRec) ? 'none' : setting.warningLevel;
     $(selector).attr('class', severityToColor[severity]);
@@ -87,11 +87,11 @@ function addCheckboxListener() {
 
 async function loadSettings() {
     console.log('loading settings');
-    let keys = Object.keys(chrome_config);
-    for(var [idx, category_name] of keys.entries()) {
+    let keys = Object.keys(chromeConfig);
+    for(let [idx, category_name] of keys.entries()) {
         addSettingCategory(category_name, (idx === 0));
-        var category = chrome_config[category_name];
-        for( var setting in category) {
+        let category = chromeConfig[category_name];
+        for( let setting in category) {
             let settingConfig = category[setting];
             if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
                 let value = await getSetting(category_name, setting);

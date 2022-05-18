@@ -1,4 +1,4 @@
-const chrome_config = {
+const chromeConfig = {
     network: {
         networkPredictionEnabled: {
             info: 'During startup and browsing domain names are getting pre-resolved. This ranges from sites you currently visit to pages you might look up later, or some of the suggested URL while typing. Therefore your browsing habbits are getting passed as information.',
@@ -99,7 +99,7 @@ const chrome_config = {
 };
 
 // source: https://owasp.org/www-project-secure-headers/#div-headers
-const security_headers = {
+const securityHeaders = {
     "x-frame-options": {
         warningLevel: 'high',
         info: 'rotection of web applications against clickjacking. It instructs the browser whether the content can be displayed within frames.'
