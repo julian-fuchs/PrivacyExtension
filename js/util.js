@@ -36,21 +36,15 @@ function addSetting(category, name, state, recommendation, info) {
 }
 
 const severityToColor = {
-    none: "text-success",
     low: "text-success",
     medium: "text-warning",
     high: "text-danger"
 }
 
 const severityToEmoji = {
-    none: "bi-emoji-laughing-fill",
     low: "bi-emoji-laughing-fill",
     medium: "bi-emoji-neutral-fill",
     high: "bi-emoji-angry-fill"
-}
-
-function addOkIssue(name, info) {
-    addIssue(name, "none", info)
 }
 
 function addIssue(name, severity, info) {

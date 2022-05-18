@@ -19,7 +19,7 @@ function verifyHeader(domain, url) {
 function checkHeader(headerMap) {
     for(const [header, setting] of Object.entries(securityHeaders)) {
         if (header in headerMap) {
-            addOkIssue(`found header ${header}`, setting.info);
+            addIssue(`found header ${header}`, 'low', setting.info);
         } else {
             addIssue(`missing header ${header}`, setting.warningLevel, setting.info);
         }

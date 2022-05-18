@@ -67,7 +67,7 @@ const getSetting = async (category, name) => {
 function toggleEmoji(selector, category, name, value) {
     let setting = chromeConfig[category][name];
     const isRec = setting.recommendedValue === value;
-    const severity = (isRec) ? 'none' : setting.warningLevel;
+    const severity = (isRec) ? 'low' : setting.warningLevel;
     $(selector).attr('class', severityToColor[severity]);
     $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
 }
@@ -96,7 +96,7 @@ async function loadSettings() {
             if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
                 let value = await getSetting(category_name, setting);
                 let isRecValue = value === settingConfig.recommendedValue;
-                addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
+                addSetting(category_name, setting, value, (isRecValue) ? 'low' : settingConfig.warningLevel, settingConfig.info);
             }
         }
     }
