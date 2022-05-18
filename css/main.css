@@ -2,8 +2,33 @@ body {
     min-width: 500px;
     max-width: 500px;
     min-height: 500px;
+    max-height: 500px;
     background: #333333;
     color: white;
+}
+
+.container {
+    padding: 7px;
+}
+
+#website, #settings {
+    max-height: 460px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#website::-webkit-scrollbar, #settings::-webkit-scrollbar {
+    width: 3px;
+}
+
+#website::-webkit-scrollbar-track, #settings::-webkit-scrollbar-track {
+    background: none;
+}
+
+#website::-webkit-scrollbar-thumb, #settings::-webkit-scrollbar-thumb {
+    background-color: #fefefe;
+    border-radius: 25px;
+    border: none;
 }
 
 td, th {
@@ -79,5 +104,3 @@ td, th {
 #view-details:hover {
     text-decoration: underline;
 }
-
-/* TODO: fix overflow */
