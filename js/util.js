@@ -1,8 +1,12 @@
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function addSettingCategory(name, first=false) {
     let col_names = ['', 'Status', 'REC'];
     let container = $('#setting-container');
     let thead = $('<thead></thead>');
-    let th = $(`<th class="text-start">${name}</th>`);
+    let th = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
     thead.append(th);
     col_names.forEach((item, _) => {
         thead.append($(`<th>${(first) ? item : ""}</th>`));
@@ -39,15 +43,10 @@ const severityToColor = {
 }
 
 const severityToEmoji = {
-    none: "bi-check-circle",
+    none: "bi-emoji-laughing-fill",
     low: "bi-emoji-laughing-fill",
     medium: "bi-emoji-neutral-fill",
     high: "bi-emoji-angry-fill"
-}
-
-const symbols = {
-    circle: "bi-check-circle",
-    info: "bi-info-circle"
 }
 
 function addOkIssue(name, info) {
