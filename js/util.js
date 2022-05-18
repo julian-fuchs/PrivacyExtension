@@ -25,7 +25,7 @@ function addSetting(category, name, state, recommendation, info) {
                        </div></td>`);
     row.append(state_col);
 
-    let rec_col = $(`<td><span class="${severityToColor[recommendation]}"><i class="bi ${severityToEmoji[recommendation]}"></i></span></td>`);
+    let rec_col = $(`<td><span class="${severityToColor[recommendation]}" id="emoji-${name}"><i class="bi ${severityToEmoji[recommendation]}"></i></span></td>`);
     row.append(rec_col);
 
     container.append(row);

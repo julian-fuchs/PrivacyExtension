@@ -53,6 +53,14 @@ const getSetting = async (category, name) => {
     });
 }
 
+function toggleEmoji(selector, category, name, value) {
+    let setting = chrome_config[category][name];
+    const isRec = setting.recommendedValue === value;
+    const severity = (isRec) ? 'none' : setting.warningLevel;
+    $(selector).attr('class', severityToColor[severity]);
+    $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
+}
+
 function addCheckboxListener() {
     $('input[type=checkbox].chrome-setting-checkbox').change( (event) => {
         let target = $(event.target);
@@ -61,6 +69,7 @@ function addCheckboxListener() {
         let value = target.is(':checked');
         chrome.privacy[category][setting].set({value: value}, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
+            toggleEmoji(`#emoji-${setting}`, category, setting, value);
         });
     })
 }
@@ -73,9 +82,11 @@ async function loadSettings() {
         var category = chrome_config[category_name];
         for( var setting in category) {
             let settingConfig = category[setting];
+            if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
             let value = await getSetting(category_name, setting);
-            let isRecValue = value !== settingConfig.recommendedValue;
+                let isRecValue = value === settingConfig.recommendedValue;
             addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
+            }
         }
     }
     addCheckboxListener();
