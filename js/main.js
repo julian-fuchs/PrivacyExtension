@@ -1,22 +1,33 @@
+function setGrade(data) {
+    $('.tab-name').text(data.name);
+    $('.grade').text(data.rating.letter);
+    let grade = 'f';
+    if (data.rating.letter !== 'N/A'){
+        grade = data.rating.letter.toLowerCase();
+    }
+    // simple approach: $('#circle').attr('class', `circle grade-${grade}`);
+    // better? remove previous grade-class with regex and add new grade class
+    $('#circle').removeClass((index, classname) => {
+        return (classname.match(/(^|\s)grade-[a-f]/g) || []).join(' ');
+    });
+    $('#circle').addClass(`grade-${grade}`);
+}
+
 function loadGrade(domain) {
     chrome.storage.local.get([domain], data => {
         if (typeof data[domain] !== 'undefined') {
-            $('.grade').text(data[domain].rating.letter);
-            document.getElementById("circle").className = "circle" + ` grade-${data[domain].rating.letter.toLowerCase()}`;
-            $('.tab-name').text(data[domain].name);
+            setGrade(data[domain]);
         } else {
-            $.get(`https://api.tosdr.org/search/v4/?query=${domain}`, function( response ) {
+            $.get(`https://api.tosdr.org/search/v4/?query=${domain}`, (response) => {
                 if (response.parameters.services.length === 0) {
                     console.log('website not found');
                     return;
                 }
                 var service = response.parameters.services[0];
-                var name = service.name;
-                var rating = service.rating;
-                $('.grade').text(rating.letter);
-                document.getElementById("circle").className = "circle" + ` grade-${rating.letter.toLowerCase()}`;
-                chrome.storage.local.set({[domain]: {name: name, rating: rating}}, function() {
-                    console.log(`saved ${domain} - ${rating.letter}`);
+                var data = {name: service.name, rating: service.rating};
+                setGrade(data);
+                chrome.storage.local.set({[domain]: data}, function() {
+                    console.log(`saved ${domain} - ${service.rating.letter}`);
                 });
             });
         }
@@ -83,9 +94,9 @@ async function loadSettings() {
         for( var setting in category) {
             let settingConfig = category[setting];
             if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
-            let value = await getSetting(category_name, setting);
+                let value = await getSetting(category_name, setting);
                 let isRecValue = value === settingConfig.recommendedValue;
-            addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
+                addSetting(category_name, setting, value, (isRecValue) ? 'none' : settingConfig.warningLevel, settingConfig.info);
             }
         }
     }

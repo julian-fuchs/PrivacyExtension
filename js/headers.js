@@ -33,7 +33,6 @@ function getHeaders(url, callback) {
         url: url,
         success: (data, textStatus, request) => {
             var responseHeaders = request.getAllResponseHeaders();
-            console.log(responseHeaders);
             let headerMap = getHeaderArray(responseHeaders);
             callback(headerMap);
         },
