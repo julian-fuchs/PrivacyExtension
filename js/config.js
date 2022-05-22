@@ -51,24 +51,24 @@ const chromeConfig = {
         searchSuggestEnabled: {
             info: 'Your search habits are getting evaluated by Omnibox, a tool from Google.',
             recommendedValue: false,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         },
         spellingServiceEnabled: {
             info: 'The third party AI webservice Sapling checks your writing. ',
             recommendedValue: false,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         },
         translationServiceEnabled: {
             info: 'Bablic translates your webpages and saves those.',
             recommendedValue: false,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         }
     },
     websites: {
         doNotTrackEnabled: {
             info: 'It sends a request to the visited side asking to no track you. It doesn\'t prohibit tracking.',
             recommendedValue: true,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         },
         hyperlinkAuditingEnabled: {
             info: 'This service tracks link klicks on sites.',
@@ -81,9 +81,9 @@ const chromeConfig = {
             warningLevel: 'high'
         },
         protectedContentEnabled: {
-            info: 'With this you can view protected content.',
+            info: 'With this you can view protected content. If you disabled this, some websites like Amazon Video or Netflix might not work.',
             recommendedValue: false,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         },
         referrersEnabled: {
             info: 'Sends referer headers with your request.',
@@ -93,7 +93,7 @@ const chromeConfig = {
         thirdPartyCookiesAllowed: {
             info: 'Blocks sites you visit from directly giving you third-party cookies.',
             recommendedValue: false,
-            warningLevel: 'high'
+            warningLevel: 'medium'
         }
     }
 };
