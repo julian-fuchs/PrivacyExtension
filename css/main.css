@@ -11,27 +11,32 @@ body {
     padding: 7px;
 }
 
-#website, #settings {
+#website,
+#settings {
     max-height: 460px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-#website::-webkit-scrollbar, #settings::-webkit-scrollbar {
+#website::-webkit-scrollbar,
+#settings::-webkit-scrollbar {
     width: 3px;
 }
 
-#website::-webkit-scrollbar-track, #settings::-webkit-scrollbar-track {
+#website::-webkit-scrollbar-track,
+#settings::-webkit-scrollbar-track {
     background: none;
 }
 
-#website::-webkit-scrollbar-thumb, #settings::-webkit-scrollbar-thumb {
+#website::-webkit-scrollbar-thumb,
+#settings::-webkit-scrollbar-thumb {
     background-color: #fefefe;
     border-radius: 25px;
     border: none;
 }
 
-td, th {
+td,
+th {
     text-align: center;
 }
 
@@ -42,13 +47,45 @@ td, th {
     padding: 10px;
     border: 1px solid #000;
     color: white;
+    cursor: default;
     text-align: center;
     font: 60px Arial, sans-serif;
     line-height: 180px;
+    transition: 150ms all;
+
+}
+
+.circle:hover {
+    border-radius: 50%;
+    animation: circlepulse 300ms ease-in-out;
+    animation-direction: alternate;
+    animation-iteration-count: 2;
+
+}
+
+@keyframes circlepulse {
+    0% {
+        transform: translate(0, 0%);
+        border-radius: 50%;
+    }
+
+    25% {
+        transform: scale(90%);
+        background-color: 90%;
+        border-radius: 50%;
+        border-color: lightslategrey;
+        border-width: 10px;
+    }
+
+    100% {
+        transform: scale(110%);
+        background-color: 100%;
+        border-radius: 50%;
+    }
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #555555;
+    background-color: #5f8f8b;
     color: white;
     border: none;
     border-radius: 0px;
@@ -102,5 +139,6 @@ td, th {
 }
 
 #view-details:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    color: #5f8f8b;
 }

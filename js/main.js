@@ -2,7 +2,7 @@ function setGrade(data) {
     $('.tab-name').text(data.name);
     $('.grade').text(data.rating.letter);
     let grade = 'f';
-    if (data.rating.letter !== 'N/A'){
+    if (data.rating.letter !== 'N/A') {
         grade = data.rating.letter.toLowerCase();
     }
     // simple approach: $('#circle').attr('class', `circle grade-${grade}`);
@@ -24,9 +24,9 @@ function loadGrade(domain) {
                     return;
                 }
                 let service = response.parameters.services[0];
-                let data = {name: service.name, rating: service.rating};
+                let data = { name: service.name, rating: service.rating };
                 setGrade(data);
-                chrome.storage.local.set({[domain]: data}, function() {
+                chrome.storage.local.set({ [domain]: data }, function () {
                     console.log(`saved ${domain} - ${service.rating.letter}`);
                 });
             });
@@ -35,7 +35,7 @@ function loadGrade(domain) {
 }
 
 function loadInfo() {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let activeTab = tabs[0];
         let url = new URL(activeTab.url);
         let domain = url.hostname;
@@ -54,7 +54,7 @@ function loadInfo() {
 
 const getSetting = async (category, name) => {
     return new Promise((resolve, reject) => {
-        chrome.privacy[category][name].get({}, function(details) {
+        chrome.privacy[category][name].get({}, function (details) {
             if (details.value === undefined) {
                 reject();
             } else {
@@ -73,12 +73,12 @@ function toggleEmoji(selector, category, name, value) {
 }
 
 function addCheckboxListener() {
-    $('input[type=checkbox].chrome-setting-checkbox').change( (event) => {
+    $('input[type=checkbox].chrome-setting-checkbox').change((event) => {
         let target = $(event.target);
         let category = target.attr('data-category');
         let setting = target.attr('data-setting');
         let value = target.is(':checked');
-        chrome.privacy[category][setting].set({value: value}, () => {
+        chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
             toggleEmoji(`#emoji-${setting}`, category, setting, value);
         });
@@ -88,10 +88,10 @@ function addCheckboxListener() {
 async function loadSettings() {
     console.log('loading settings');
     let keys = Object.keys(chromeConfig);
-    for(let [idx, category_name] of keys.entries()) {
+    for (let [idx, category_name] of keys.entries()) {
         addSettingCategory(category_name, (idx === 0));
         let category = chromeConfig[category_name];
-        for( let setting in category) {
+        for (let setting in category) {
             let settingConfig = category[setting];
             if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
                 let value = await getSetting(category_name, setting);
@@ -113,15 +113,16 @@ function addLinkToWebsiteTab() {
     });
 }
 
-$(function() {
+
+$(function () {
     loadInfo();
     loadSettings();
     addLinkToWebsiteTab();
     // TODO: trigger 'click' doesnt seem to work
     // only hover is fine or need to investigate
     $('[data-toggle-bs="tooltip"]').tooltip({
-      animated: 'fade',
-      placement: 'bottom',
-      trigger: 'click hover focus'
+        animated: 'fade',
+        placement: 'bottom',
+        trigger: 'click hover focus'
     });
 });

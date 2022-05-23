@@ -2,7 +2,7 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function addSettingCategory(name, first=false) {
+function addSettingCategory(name, first = false) {
     const colNames = ['', 'Status', 'REC'];
     const container = $('#setting-container');
     const thead = $('<thead></thead>');
