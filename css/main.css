@@ -142,3 +142,6 @@ th {
     text-decoration: none;
     color: #5f8f8b;
 }
+.dashboard-content {
+    transform: translateY(25%);
+}
