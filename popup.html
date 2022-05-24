@@ -8,20 +8,22 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-icons.css" />
     <link rel='stylesheet' type='text/css' media='screen' href='css/main.css'>
-    
 </head>
 <body>
     <div class="container">
+         
         <div class="tab-content">
             <div class="tab-pane active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                 <h1 class="text-center tab-name">Website</h1>
                 <hr/>
-                <div class="d-flex justify-content-center">
-                    <div class="circle grade-f" id="circle">
-                        <span class="grade">n/a</span>
+                <div class="dashboard-content">
+                    <div class="d-flex justify-content-center">
+                        <div class="water grade-f " id="circle">
+                            <span class="grade">n/a</span>
+                        </div>
                     </div>
+                    <h2 class="text-center mt-3" data-bs-target="#website" id="view-details">View Details</h2>
                 </div>
-                <h2 class="text-center mt-3" data-bs-target="#website" id="view-details">View Details</h2>
             </div>
             <div class="tab-pane" id="website" role="tabpanel" aria-labelledby="website-tab">
                 <h1 class="text-center tab-name">Website</h1>
@@ -56,5 +58,7 @@
     <script src="js/util.js"></script>
     <script src="js/headers.js"></script>
     <script src='js/main.js'></script>
+    <script src="js/ga.js"></script>
+    <script src="js/ga-helper.jss"></script>
 </body>
 </html>
