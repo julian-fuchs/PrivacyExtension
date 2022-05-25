@@ -11,24 +11,24 @@ body {
     padding: 7px;
 }
 
-#website,
+#details,
 #settings {
     max-height: 460px;
     overflow-x: hidden;
     overflow-y: scroll;
 }
 
-#website::-webkit-scrollbar,
+#details::-webkit-scrollbar,
 #settings::-webkit-scrollbar {
     width: 3px;
 }
 
-#website::-webkit-scrollbar-track,
+#details::-webkit-scrollbar-track,
 #settings::-webkit-scrollbar-track {
     background: none;
 }
 
-#website::-webkit-scrollbar-thumb,
+#details::-webkit-scrollbar-thumb,
 #settings::-webkit-scrollbar-thumb {
     background-color: #fefefe;
     border-radius: 25px;
@@ -136,6 +136,7 @@ th {
 #view-details {
     cursor: pointer;
     text-decoration: none;
+    color:white;
 }
 
 #view-details:hover {

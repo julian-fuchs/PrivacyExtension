@@ -1,3 +1,7 @@
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-229958247-1']);
+_gaq.push(['_trackPageview']);
+
 function setGrade(data) {
     $('.tab-name').text(data.name);
     $('.grade').text(data.rating.letter);
@@ -11,6 +15,8 @@ function setGrade(data) {
         return (classname.match(/(^|\s)grade-[a-f]/g) || []).join(' ');
     });
     $('#circle').addClass(`grade-${grade}`);
+
+    $('.tosdr-anchor').attr('href', `https://tosdr.org/en/service/${data.id}`);
 }
 
 function loadGrade(domain) {
@@ -24,7 +30,7 @@ function loadGrade(domain) {
                     return;
                 }
                 let service = response.parameters.services[0];
-                let data = { name: service.name, rating: service.rating };
+                let data = { name: service.name, rating: service.rating, id: service.id};
                 setGrade(data);
                 chrome.storage.local.set({ [domain]: data }, function () {
                     console.log(`saved ${domain} - ${service.rating.letter}`);
@@ -81,6 +87,7 @@ function addCheckboxListener() {
         chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
             toggleEmoji(`#emoji-${setting}`, category, setting, value);
+            _gaq.push(['_trackEvent', `${category}.${setting}`, value]);
         });
     })
 }
@@ -103,21 +110,21 @@ async function loadSettings() {
     addCheckboxListener();
 }
 
-function addLinkToWebsiteTab() {
-    $('#view-details').click((event) => {
-        event.preventDefault();
-        $('.tab-content > .tab-pane.active').removeClass('active');
-        $('#tablist > .nav-link.active').removeClass('active');
-        $('#website').addClass('active');
-        $('#website-tab').addClass('active');
-    });
-}
+// function addLinkToWebsiteTab() {
+//     $('#view-details').click((event) => {
+//         event.preventDefault();
+//         $('.tab-content > .tab-pane.active').removeClass('active');
+//         $('#tablist > .nav-link.active').removeClass('active');
+//         $('#website').addClass('active');
+//         $('#website-tab').addClass('active');
+//     });
+// }
 
 
 $(function () {
     loadInfo();
     loadSettings();
-    addLinkToWebsiteTab();
+    // addLinkToWebsiteTab();
     // TODO: trigger 'click' doesnt seem to work
     // only hover is fine or need to investigate
     $('[data-toggle-bs="tooltip"]').tooltip({
