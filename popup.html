@@ -12,8 +12,42 @@
 </head>
 <body>
     <div class="container">
+        <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content dark-mode">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="aboutModalLabel">About</h5>
+                  <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center text-white">
+                        <h4>Authors</h4>
+                        <span>La Ra</span>
+                        <span>Infinitum</span>
+                        <span>dixonym</span>
+                    </div>
+                    <div class="text-white text-center">
+                        <h4>Inspiration</h4>
+                        <a href="https://chrome.google.com/webstore/detail/privacy-settings/ijadljdlbkfhdoblhaedfgepliodmomj#">Chrome Extension "Privacy Settings" by rynu.smith</a><br/>
+                        <a href="https://github.com/p1ngul1n0/secure-addon">Chrome Extension "Secure-Addon" by p1ngul1n0</a>
+                    </div>
+                    <div class="text-white text-center">
+                        <h4>Icon</h4>
+                        <img src="img/logo-32x32.png"><br/>
+                        <a href="https://www.flaticon.com/free-icons/cyber-security" title="cyber security icons">Icon created by Freepik from Flaticon</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="tab-content">
             <div class="tab-pane active" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                <button type="button" class="btn btn-primary" id="info-btn" data-bs-toggle="modal" data-bs-target="#aboutModal">
+                    <i class="bi bi-info-circle" data-bs-toggle="tooltip" title="About"></i>
+                </button>
                 <h1 class="text-center tab-name">Website</h1>
                 <hr/>
                 <div class="dashboard-content">

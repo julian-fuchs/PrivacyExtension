@@ -145,3 +145,16 @@ th {
 .dashboard-content {
     transform: translateY(25%);
 }
+
+#info-btn {
+    position: absolute;
+    top: 15%;
+    left: 90%;
+    background-color: transparent;
+    border: none;
+}
+
+.dark-mode {
+    background: #333333;
+    border-color: white;
+}
