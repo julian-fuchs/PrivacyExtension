@@ -1,3 +1,7 @@
+@font-face {
+    font-family: BergenMono;
+    src: url(fonts/BergenMono-Regular.woff);
+}
 body {
     min-width: 500px;
     max-width: 500px;
@@ -5,6 +9,7 @@ body {
     max-height: 500px;
     background: #333333;
     color: white;
+    font-family: BergenMono;
 }
 
 .container {
@@ -106,31 +111,65 @@ th {
 }
 
 .checkbox-center {
-    margin-left: 40px;
+    margin-left: 15px;
 }
 
-.grade-a {
+.water.grade-a {
     background-color: #198754;
 }
 
-.grade-b {
+.water.grade-a > .grade {
+    color: white;
+}
+
+.water.grade-a:after, .water.grade-a:before {
+    top: -190px;
+}
+
+.water.grade-b {
     background-color: #79B752;
 }
 
-.grade-c {
+.water.grade-b > .grade {
+    color: white;
+}
+
+.water.grade-b:after, .water.grade-b:before {
+    top: -165px;
+}
+
+.water.grade-c {
     background-color: #FFC107;
 }
 
-.grade-d {
+
+.water.grade-c:after, .water.grade-c:before {
+    top: -80px;
+}
+
+.water.grade-d {
     background-color: #D66F2C;
 }
 
-.grade-e {
+.water.grade-d:after, .water.grade-d:before {
+    top: -60px;
+}
+
+.water.grade-e {
     background-color: #DC3545;
 }
 
-.grade-f {
+.water.grade-e:after, .water.grade-e:before {
+    top: -40px;
+}
+
+.water.grade-f {
     background-color: #363636;
+}
+
+
+.water.grade-f:after, .water.grade-f:before {
+    top: -20px;
 }
 
 #view-details {
@@ -148,6 +187,7 @@ th {
     transform: translateY(25%);
 }
 
+
 #info-btn {
     position: absolute;
     top: 15%;
@@ -159,4 +199,55 @@ th {
 .dark-mode {
     background: #333333;
     border-color: white;
+}
+
+.water{
+    width: 200px;
+    height: 200px;
+    background-color: #363636;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0 0 30px 0 rgba(0,0,0,.5), 0 4px 10px 0 rgba(0,0,0,.5);
+    overflow: hidden;
+}
+.water:before, .water:after{
+    content:'';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top:-70px;
+    background-color: #fff;
+}
+.water:before{
+    border-radius: 45%;
+    background:rgba(255,255,255,.7);
+    animation:wave 5s linear infinite;
+}
+.water:after{
+    border-radius: 35%;
+    background:rgba(255,255,255,.3);
+    animation:wave 5s linear infinite;
+}
+
+@keyframes wave{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.grade {
+    position: absolute;
+    top: 20%;
+    z-index: 99999;
+    color: black;
+    font-size: 5em;
+    left: 39%;
+    font-family: BergenMono;
+}
+
+div#settings {
+    font-size: 0.85em;
 }

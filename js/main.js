@@ -4,9 +4,9 @@ _gaq.push(['_trackPageview']);
 
 function setGrade(data) {
     $('.tab-name').text(data.name);
-    $('.grade').text(data.rating.letter);
     let grade = 'f';
     if (data.rating.letter !== 'N/A') {
+        $('.grade').text(data.rating.letter);
         grade = data.rating.letter.toLowerCase();
     }
     // simple approach: $('#circle').attr('class', `circle grade-${grade}`);
