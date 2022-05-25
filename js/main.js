@@ -87,7 +87,7 @@ function addCheckboxListener() {
         chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
             toggleEmoji(`#emoji-${setting}`, category, setting, value);
-            _gaq.push(['_trackEvent', `${category}.${setting}`, value]);
+            _gaq.push(['_trackEvent', `${category}.${setting}`, 'clicked',  `${value}`]);
         });
     })
 }
