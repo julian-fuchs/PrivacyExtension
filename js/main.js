@@ -105,6 +105,13 @@ function addCheckboxListener() {
     })
 }
 
+function trackNavigation() {
+    $('button.nav-link').click((event) => {
+        let target = $(event.target);
+        _gaq.push(['_trackEvent', target.id, 'clicked']);
+    })
+}
+
 async function loadSettings() {
     console.log('loading settings');
     let keys = Object.keys(chromeConfig);
@@ -133,4 +140,5 @@ $(function () {
         placement: 'bottom',
         trigger: 'click hover focus'
     });
+    trackNavigation();
 });
