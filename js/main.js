@@ -19,6 +19,15 @@ function setGrade(data) {
     $('.tosdr-anchor').attr('href', `https://tosdr.org/en/service/${data.id}`);
 }
 
+function findMatchingResult(services, domain) {
+    for(let service of services) {
+        if (service.urls !== undefined && service.urls.includes(domain)) {
+            return service;
+        }
+    }
+    return null;
+}
+
 function loadGrade(domain) {
     chrome.storage.local.get([domain], data => {
         if (typeof data[domain] !== 'undefined') {
@@ -29,7 +38,11 @@ function loadGrade(domain) {
                     console.log('website not found');
                     return;
                 }
-                let service = response.parameters.services[0];
+                let service = findMatchingResult(response.parameters.services, domain);
+                if (service === null) {
+                    console.log('matching service on tosdr.org not found');
+                    return;
+                }
                 let data = { name: service.name, rating: service.rating, id: service.id};
                 setGrade(data);
                 chrome.storage.local.set({ [domain]: data }, function () {
@@ -110,21 +123,9 @@ async function loadSettings() {
     addCheckboxListener();
 }
 
-// function addLinkToWebsiteTab() {
-//     $('#view-details').click((event) => {
-//         event.preventDefault();
-//         $('.tab-content > .tab-pane.active').removeClass('active');
-//         $('#tablist > .nav-link.active').removeClass('active');
-//         $('#website').addClass('active');
-//         $('#website-tab').addClass('active');
-//     });
-// }
-
-
 $(function () {
     loadInfo();
     loadSettings();
-    // addLinkToWebsiteTab();
     // TODO: trigger 'click' doesnt seem to work
     // only hover is fine or need to investigate
     $('[data-toggle-bs="tooltip"]').tooltip({
