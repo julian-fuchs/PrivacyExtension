@@ -68,6 +68,10 @@ th {
     color: white;
 }
 
+.nav-link.active:hover {
+    background-color: #7EA5A2;
+}
+
 .checkbox-center {
     margin-left: 15px;
 }
@@ -133,7 +137,7 @@ th {
 }
 
 .water.grade-a {
-    background-color: #198754;
+    background-color: #1D7044;
 }
 
 .water.grade-a>.grade {
@@ -146,7 +150,7 @@ th {
 }
 
 .water.grade-b {
-    background-color: #79B752;
+    background-color: #75AD6F;
 }
 
 .water.grade-b>.grade {
@@ -159,7 +163,7 @@ th {
 }
 
 .water.grade-c {
-    background-color: #FFC107;
+    background-color: #FFBE00;
 }
 
 .water.grade-c:after,
@@ -168,7 +172,7 @@ th {
 }
 
 .water.grade-d {
-    background-color: #D66F2C;
+    background-color: #FF7E01;
 }
 
 .water.grade-d:after,
@@ -177,7 +181,7 @@ th {
 }
 
 .water.grade-e {
-    background-color: #DC3545;
+    background-color: #E3071D;
 }
 
 .water.grade-e:after,
