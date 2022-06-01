@@ -21,7 +21,7 @@ function addSetting(category, name, state, recommendation, info) {
     const row = $('<tr></tr>');
     const nameCol = $(`<td class="text-start">${category}.${name}</td>`);
     row.append(nameCol);
-    const infoCol = $(`<td><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></td>`);
+    const infoCol = $(`<td><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${name}" data-bs-toggle="tooltip" title="${info}"></i></td>`);
     row.append(infoCol);
     const stateCol = $(`<td><div class="form-check form-switch checkbox-center">\
                        <input class="form-check-input chrome-setting-checkbox" type="checkbox" role="switch" \
@@ -47,12 +47,12 @@ const severityToEmoji = {
     high: "bi-emoji-angry-fill"
 }
 
-function addIssue(name, severity, info) {
+function addIssue(header, name, severity, info) {
     const container = $('#issue-list');
     const row = $('<tr></tr>');
     const issueCol = $(`<td class="text-start">${name}</td>`);
     const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
-    const infoCol = $(`<th><i class="bi bi-info-circle" data-bs-toggle="tooltip" title="${info}"></i></th>`);
+    const infoCol = $(`<th><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></th>`);
     row.append(issueCol);
     row.append(statusCol);
     row.append(infoCol);

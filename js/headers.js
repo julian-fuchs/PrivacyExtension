@@ -19,9 +19,9 @@ function verifyHeader(domain, url) {
 function checkHeader(headerMap) {
     for(const [header, setting] of Object.entries(securityHeaders)) {
         if (header in headerMap) {
-            addIssue(`found header ${header}`, 'low', setting.info);
+            addIssue(header, `found header ${header}`, 'low', setting.info);
         } else {
-            addIssue(`missing header ${header}`, setting.warningLevel, setting.info);
+            addIssue(header, `missing header ${header}`, setting.warningLevel, setting.info);
         }
     };
     return headerMap;
@@ -60,7 +60,7 @@ function verifyCookies(domain) {
         cookies.forEach((cookie) => {
             for(const [attribute, setting] of Object.entries(cookieAttributes)) {
                 if (!cookie[attribute]) {
-                    addIssue(`missing ${attribute} for ${cookie.name}`, setting.warningLevel, setting.info);
+                    addIssue(attribute, `missing ${attribute} for ${cookie.name}`, setting.warningLevel, setting.info);
                 }
             }
         });

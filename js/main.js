@@ -108,8 +108,9 @@ function addCheckboxListener() {
 function trackNavigation() {
     $('button.nav-link').click((event) => {
         let target = $(event.target);
-        _gaq.push(['_trackEvent', target.id, 'clicked']);
-    })
+        _gaq.push(['_trackEvent', target.attr('id'), 'clicked']);
+        console.log(`${target.attr('id')} clicked`);
+    });
 }
 
 async function loadSettings() {
@@ -128,6 +129,16 @@ async function loadSettings() {
         }
     }
     addCheckboxListener();
+    trackToolTip();
+}
+
+function trackToolTip() {
+    $('i.info-tooltip').hover((event) => {
+        if (event.type == 'mouseenter') {
+            let target = $(event.target);
+            _gaq.push(['_trackEvent', target.attr('data-name'), 'hovered']);
+        }
+    });
 }
 
 $(function () {
