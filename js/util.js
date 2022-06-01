@@ -2,15 +2,14 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function addSettingCategory(name, first = false) {
-    const colNames = ['', 'Status', 'REC'];
+function addSettingCategory(name) {
     const container = $('#setting-container');
     const thead = $('<thead></thead>');
     const thCol = $(`<th class="text-start col-70">${capitalizeFirstLetter(name)}</th>`);
     thead.append(thCol);
-    colNames.forEach((item, _) => {
-        thead.append($(`<th class="col-10">${(first) ? item : ''}</th>`));
-    });
+    for(let i = 0; i < 3; i++) {
+        thead.append($(`<th class="col-10"></th>`));
+    }
     container.append(thead);
     let tbody = $(`<tbody class="${name}-settings"></tbody>`);
     container.append(tbody);

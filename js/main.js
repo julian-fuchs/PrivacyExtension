@@ -57,10 +57,10 @@ function loadInfo() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let activeTab = tabs[0];
         let url = new URL(activeTab.url);
-        let domain = url.hostname;
-        if (/[^\.]*\.[^.]*$/.test(domain)) {
-            domain = domain.match(/[^\.]*\.[^.]*$/)[0];
-            console.log(domain);
+        let pattern = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/;
+        let matches = activeTab.url.match(pattern);
+        if (matches !== 'undefined' && matches.length > 1) {
+            let domain = matches[1];
             $('.tab-name').text(domain);
             loadGrade(domain);
             verifyHeader(domain, url);
@@ -116,8 +116,8 @@ function trackNavigation() {
 async function loadSettings() {
     console.log('loading settings');
     let keys = Object.keys(chromeConfig);
-    for (let [idx, category_name] of keys.entries()) {
-        addSettingCategory(category_name, (idx === 0));
+    for (let category_name of keys) {
+        addSettingCategory(category_name);
         let category = chromeConfig[category_name];
         for (let setting in category) {
             let settingConfig = category[setting];
