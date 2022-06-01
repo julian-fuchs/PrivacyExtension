@@ -2,23 +2,25 @@
     font-family: BergenMono;
     src: url(fonts/BergenMono-Regular.woff);
 }
+
 body {
-    min-width: 500px;
-    max-width: 500px;
-    min-height: 500px;
-    max-height: 500px;
     background: #333333;
     color: white;
     font-family: BergenMono;
+    max-height: 500px;
+    max-width: 500px;
+    min-height: 500px;
+    min-width: 500px;
 }
 
 .container {
-    padding: 7px;
+    padding: 7px 7px 0px 7px;
+    max-height: 500px;
 }
 
 #details,
 #settings {
-    max-height: 460px;
+    font-size: 0.85em;
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -36,8 +38,8 @@ body {
 #details::-webkit-scrollbar-thumb,
 #settings::-webkit-scrollbar-thumb {
     background-color: #fefefe;
-    border-radius: 25px;
     border: none;
+    border-radius: 25px;
 }
 
 td,
@@ -45,155 +47,52 @@ th {
     text-align: center;
 }
 
-.circle {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    padding: 10px;
-    border: 1px solid #000;
-    color: white;
-    cursor: default;
-    text-align: center;
-    font: 60px Arial, sans-serif;
-    line-height: 180px;
-    transition: 150ms all;
-
-}
-
-.circle:hover {
-    border-radius: 50%;
-    animation: circlepulse 300ms ease-in-out;
-    animation-direction: alternate;
-    animation-iteration-count: 2;
-
-}
-
-@keyframes circlepulse {
-    0% {
-        transform: translate(0, 0%);
-        border-radius: 50%;
-    }
-
-    25% {
-        transform: scale(90%);
-        background-color: 90%;
-        border-radius: 50%;
-        border-color: lightslategrey;
-        border-width: 10px;
-    }
-
-    100% {
-        transform: scale(110%);
-        background-color: 100%;
-        border-radius: 50%;
-    }
-}
-
 .nav-tabs .nav-link.active {
     background-color: #5f8f8b;
-    color: white;
     border: none;
     border-radius: 0px;
+    color: white;
 }
 
 .nav-tabs .nav-link {
-    color: white;
     background-color: #333333;
     border: none;
     border-radius: 0px;
+    color: white;
 }
 
 .nav-tabs .nav-link:hover {
     background-color: #777777;
-    color: white;
     border: none;
     border-radius: 0px;
+    color: white;
 }
 
 .checkbox-center {
     margin-left: 15px;
 }
 
-.water.grade-a {
-    background-color: #198754;
-}
-
-.water.grade-a > .grade {
-    color: white;
-}
-
-.water.grade-a:after, .water.grade-a:before {
-    top: -190px;
-}
-
-.water.grade-b {
-    background-color: #79B752;
-}
-
-.water.grade-b > .grade {
-    color: white;
-}
-
-.water.grade-b:after, .water.grade-b:before {
-    top: -165px;
-}
-
-.water.grade-c {
-    background-color: #FFC107;
-}
-
-
-.water.grade-c:after, .water.grade-c:before {
-    top: -80px;
-}
-
-.water.grade-d {
-    background-color: #D66F2C;
-}
-
-.water.grade-d:after, .water.grade-d:before {
-    top: -60px;
-}
-
-.water.grade-e {
-    background-color: #DC3545;
-}
-
-.water.grade-e:after, .water.grade-e:before {
-    top: -40px;
-}
-
-.water.grade-f {
-    background-color: #363636;
-}
-
-
-.water.grade-f:after, .water.grade-f:before {
-    top: -20px;
-}
-
 #view-details {
+    color: white;
     cursor: pointer;
     text-decoration: none;
-    color:white;
 }
 
 #view-details:hover {
-    text-decoration: none;
     color: #5f8f8b;
+    text-decoration: none;
 }
 
 .dashboard-content {
     transform: translateY(25%);
 }
 
-
 #info-btn {
-    position: absolute;
-    top: 15%;
-    left: 90%;
     background-color: transparent;
     border: none;
+    left: 90%;
+    position: absolute;
+    top: 15%;
 }
 
 .dark-mode {
@@ -201,53 +100,129 @@ th {
     border-color: white;
 }
 
-.water{
-    width: 200px;
-    height: 200px;
+.water {
     background-color: #363636;
     border-radius: 50%;
-    position: relative;
-    box-shadow: inset 0 0 30px 0 rgba(0,0,0,.5), 0 4px 10px 0 rgba(0,0,0,.5);
-    overflow: hidden;
-}
-.water:before, .water:after{
-    content:'';
-    position: absolute;
-    width: 200px;
+    box-shadow: inset 0 0 30px 0 rgba(0, 0, 0, .5), 0 4px 10px 0 rgba(0, 0, 0, .5);
     height: 200px;
-    top:-70px;
-    background-color: #fff;
-}
-.water:before{
-    border-radius: 45%;
-    background:rgba(255,255,255,.7);
-    animation:wave 5s linear infinite;
-}
-.water:after{
-    border-radius: 35%;
-    background:rgba(255,255,255,.3);
-    animation:wave 5s linear infinite;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
 }
 
-@keyframes wave{
-    0%{
+.water:before,
+.water:after {
+    background-color: #fff;
+    content: '';
+    height: 200px;
+    position: absolute;
+    top: -70px;
+    width: 200px;
+}
+
+.water:before {
+    animation: wave 5s linear infinite;
+    background: rgba(255, 255, 255, .7);
+    border-radius: 45%;
+}
+
+.water:after {
+    animation: wave 5s linear infinite;
+    background: rgba(255, 255, 255, .3);
+    border-radius: 35%;
+}
+
+.water.grade-a {
+    background-color: #198754;
+}
+
+.water.grade-a>.grade {
+    color: white;
+}
+
+.water.grade-a:after,
+.water.grade-a:before {
+    top: -190px;
+}
+
+.water.grade-b {
+    background-color: #79B752;
+}
+
+.water.grade-b>.grade {
+    color: white;
+}
+
+.water.grade-b:after,
+.water.grade-b:before {
+    top: -165px;
+}
+
+.water.grade-c {
+    background-color: #FFC107;
+}
+
+.water.grade-c:after,
+.water.grade-c:before {
+    top: -80px;
+}
+
+.water.grade-d {
+    background-color: #D66F2C;
+}
+
+.water.grade-d:after,
+.water.grade-d:before {
+    top: -60px;
+}
+
+.water.grade-e {
+    background-color: #DC3545;
+}
+
+.water.grade-e:after,
+.water.grade-e:before {
+    top: -40px;
+}
+
+.water.grade-f {
+    background-color: #363636;
+}
+
+.water.grade-f:after,
+.water.grade-f:before {
+    top: -20px;
+}
+
+@keyframes wave {
+    0% {
         transform: rotate(0);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
 
 .grade {
+    color: black;
+    font-family: BergenMono;
+    font-size: 5em;
+    left: 39%;
     position: absolute;
     top: 20%;
     z-index: 99999;
-    color: black;
-    font-size: 5em;
-    left: 39%;
-    font-family: BergenMono;
 }
 
-div#settings {
-    font-size: 0.85em;
+.tab-pane {
+    max-height: 440px;
+}
+
+.tab-content {
+    padding-bottom: 40px;
+}
+
+.form-check-input:checked {
+    background-color: #5f8f8b;
+    border-color: #5f8f8b;
 }
