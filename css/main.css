@@ -226,3 +226,11 @@ th {
     background-color: #5f8f8b;
     border-color: #5f8f8b;
 }
+
+.col-70 {
+    width: 70%
+}
+
+.col-10 {
+    width: 10%
+}

@@ -6,10 +6,10 @@ function addSettingCategory(name, first = false) {
     const colNames = ['', 'Status', 'REC'];
     const container = $('#setting-container');
     const thead = $('<thead></thead>');
-    const thCol = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
+    const thCol = $(`<th class="text-start col-70">${capitalizeFirstLetter(name)}</th>`);
     thead.append(thCol);
     colNames.forEach((item, _) => {
-        thead.append($(`<th>${(first) ? item : ""}</th>`));
+        thead.append($(`<th class="col-10">${(first) ? item : ''}</th>`));
     });
     container.append(thead);
     let tbody = $(`<tbody class="${name}-settings"></tbody>`);
@@ -19,7 +19,7 @@ function addSettingCategory(name, first = false) {
 function addSetting(category, name, state, recommendation, info) {
     const container = $(`#setting-container > tbody.${category}-settings`)
     const row = $('<tr></tr>');
-    const nameCol = $(`<td class="text-start">${category}.${name}</td>`);
+    const nameCol = $(`<td class="text-start">${name}</td>`);
     row.append(nameCol);
     const infoCol = $(`<td><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${name}" data-bs-toggle="tooltip" title="${info}"></i></td>`);
     row.append(infoCol);
