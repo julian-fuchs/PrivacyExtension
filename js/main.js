@@ -1,6 +1,16 @@
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-230603791-1']);
-_gaq.push(['_trackPageview']);
+const trackingEnabled = false;
+
+if (trackingEnabled) {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-230603791-1']);
+    _gaq.push(['_trackPageview']);
+}
+
+function trackingPush(data) {
+    if (trackingEnabled) {
+        _gaq.push(data);
+    }
+}
 
 function setGrade(data) {
     $('.tab-name').text(data.name);
@@ -89,6 +99,12 @@ function toggleEmoji(selector, category, name, value) {
     const severity = (isRec) ? 'low' : setting.warningLevel;
     $(selector).attr('class', severityToColor[severity]);
     $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
+
+    if (isRec) {
+        console.log(`#heart-${name}`);
+        $(`#heart-${name}`).toggleClass('d-none');
+        $(`#heart-${name}`).toggleClass('animating');
+    }
 }
 
 function addCheckboxListener() {
@@ -100,7 +116,7 @@ function addCheckboxListener() {
         chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
             toggleEmoji(`#emoji-${setting}`, category, setting, value);
-            _gaq.push(['_trackEvent', `${category}.${setting}`, 'clicked',  `${value}`]);
+            trackingPush(['_trackEvent', `${category}.${setting}`, 'clicked',  `${value}`]);
         });
     })
 }
@@ -108,8 +124,7 @@ function addCheckboxListener() {
 function trackNavigation() {
     $('button.nav-link').click((event) => {
         let target = $(event.target);
-        _gaq.push(['_trackEvent', target.attr('id'), 'clicked']);
-        console.log(`${target.attr('id')} clicked`);
+        trackingPush(['_trackEvent', target.attr('id'), 'clicked']);
     });
 }
 
@@ -130,15 +145,28 @@ async function loadSettings() {
     }
     addCheckboxListener();
     trackToolTip();
+    addHeartEvents();
 }
 
 function trackToolTip() {
     $('i.info-tooltip').hover((event) => {
         if (event.type == 'mouseenter') {
             let target = $(event.target);
-            _gaq.push(['_trackEvent', target.attr('data-name'), 'hovered']);
+            trackingPush(['_trackEvent', target.attr('data-name'), 'hovered']);
         }
     });
+}
+
+function addHeartEvents() {
+    $(".heart").on('animationend', () => {
+        $('.heart.animating').toggleClass('d-none');
+        $('.heart.animating').toggleClass('animating');
+    });
+
+    $(".heart").on('animationcancel', () => {
+        $('.heart.animating').toggleClass('d-none');
+    });
+
 }
 
 $(function () {
@@ -153,3 +181,4 @@ $(function () {
     });
     trackNavigation();
 });
+

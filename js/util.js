@@ -17,6 +17,7 @@ function addSettingCategory(name) {
 
 function addSetting(category, name, state, recommendation, info) {
     const container = $(`#setting-container > tbody.${category}-settings`)
+    container.append(`<div class="heart d-none" id="heart-${name}"></div>`);
     const row = $('<tr></tr>');
     const nameCol = $(`<td class="text-start">${name}</td>`);
     row.append(nameCol);

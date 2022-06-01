@@ -252,6 +252,43 @@ th {
     border-color: #5f8f8b;
 }
 
+.heart {
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    background-image: url('../img/heart.png');
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 4000%;
+    background-position: right;
+}
+
+.heart:hover {
+    background-position: right;
+}
+
+.animating {
+    animation: heart-burst .8s steps(28) 1;
+}
+
+@keyframes heart-burst {
+    from {
+        background-position: left;
+    }
+
+    to {
+        background-position: right;
+    }
+}
+
+.heart {
+    float: left;
+    position: fixed;
+    z-index: 99999;
+    left: 80%;
+    transform: translate(10px, -35px);
+}
+
 .col-70 {
     width: 70%
 }
