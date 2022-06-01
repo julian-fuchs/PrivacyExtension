@@ -99,6 +99,10 @@ th {
     top: 15%;
 }
 
+#info-btn:hover {
+    color: #5f8f8b;
+}
+
 .dark-mode {
     background: #333333;
     border-color: white;
@@ -141,7 +145,7 @@ th {
 }
 
 .water.grade-a>.grade {
-    color: white;
+    color: #BBD4C6;
 }
 
 .water.grade-a:after,
@@ -154,7 +158,7 @@ th {
 }
 
 .water.grade-b>.grade {
-    color: white;
+    color: #D5E6D3;
 }
 
 .water.grade-b:after,
@@ -166,6 +170,10 @@ th {
     background-color: #FFBE00;
 }
 
+.water.grade-c>.grade {
+    color: #FFD14C;
+}
+
 .water.grade-c:after,
 .water.grade-c:before {
     top: -80px;
@@ -173,6 +181,10 @@ th {
 
 .water.grade-d {
     background-color: #FF7E01;
+}
+
+.water.grade-d>.grade {
+    color: #FFA44D;
 }
 
 .water.grade-d:after,
@@ -184,6 +196,10 @@ th {
     background-color: #E3071D;
 }
 
+.water.grade-e>.grade {
+    color: #EB5160;
+}
+
 .water.grade-e:after,
 .water.grade-e:before {
     top: -40px;
@@ -191,6 +207,10 @@ th {
 
 .water.grade-f {
     background-color: #363636;
+}
+
+.water.grade-f>.grade {
+    color: #727272;
 }
 
 .water.grade-f:after,
@@ -252,4 +272,12 @@ th {
 
 .icon-link {
     font-size: 0.91em;
+}
+
+.info-tooltip:hover {
+    color: #5f8f8b;
+}
+
+.chrome-setting-checkbox {
+    cursor: pointer;
 }
