@@ -1,5 +1,5 @@
 var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-229958247-1']);
+_gaq.push(['_setAccount', 'UA-230603791-1']);
 _gaq.push(['_trackPageview']);
 
 function setGrade(data) {

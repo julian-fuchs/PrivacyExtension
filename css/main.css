@@ -68,6 +68,10 @@ th {
     color: white;
 }
 
+.nav-link.active:hover {
+    background-color: #7EA5A2;
+}
+
 .checkbox-center {
     margin-left: 15px;
 }
@@ -93,6 +97,10 @@ th {
     left: 90%;
     position: absolute;
     top: 15%;
+}
+
+#info-btn:hover {
+    color: #5f8f8b;
 }
 
 .dark-mode {
@@ -133,11 +141,11 @@ th {
 }
 
 .water.grade-a {
-    background-color: #198754;
+    background-color: #1D7044;
 }
 
 .water.grade-a>.grade {
-    color: white;
+    color: #BBD4C6;
 }
 
 .water.grade-a:after,
@@ -146,11 +154,11 @@ th {
 }
 
 .water.grade-b {
-    background-color: #79B752;
+    background-color: #75AD6F;
 }
 
 .water.grade-b>.grade {
-    color: white;
+    color: #D5E6D3;
 }
 
 .water.grade-b:after,
@@ -159,7 +167,11 @@ th {
 }
 
 .water.grade-c {
-    background-color: #FFC107;
+    background-color: #FFBE00;
+}
+
+.water.grade-c>.grade {
+    color: #FFD14C;
 }
 
 .water.grade-c:after,
@@ -168,7 +180,11 @@ th {
 }
 
 .water.grade-d {
-    background-color: #D66F2C;
+    background-color: #FF7E01;
+}
+
+.water.grade-d>.grade {
+    color: #FFA44D;
 }
 
 .water.grade-d:after,
@@ -177,7 +193,11 @@ th {
 }
 
 .water.grade-e {
-    background-color: #DC3545;
+    background-color: #E3071D;
+}
+
+.water.grade-e>.grade {
+    color: #EB5160;
 }
 
 .water.grade-e:after,
@@ -187,6 +207,10 @@ th {
 
 .water.grade-f {
     background-color: #363636;
+}
+
+.water.grade-f>.grade {
+    color: #727272;
 }
 
 .water.grade-f:after,
@@ -212,6 +236,7 @@ th {
     position: absolute;
     top: 20%;
     z-index: 99999;
+    user-select: none;
 }
 
 .tab-pane {
@@ -243,4 +268,16 @@ th {
 
 .form-switch .form-check-input:focus:checked {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
+}
+
+.icon-link {
+    font-size: 0.91em;
+}
+
+.info-tooltip:hover {
+    color: #5f8f8b;
+}
+
+.chrome-setting-checkbox {
+    cursor: pointer;
 }
