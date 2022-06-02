@@ -253,14 +253,17 @@ th {
 }
 
 .heart {
-    cursor: pointer;
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     background-image: url('../img/heart.png');
-    background-position: left;
     background-repeat: no-repeat;
     background-size: 4000%;
-    background-position: right;
+    background-position: 96%;
+    float: left;
+    position: absolute;
+    z-index: 99999;
+    left: 40%;
+    top: 36%;
 }
 
 .heart:hover {
@@ -279,14 +282,6 @@ th {
     to {
         background-position: right;
     }
-}
-
-.heart {
-    float: left;
-    position: fixed;
-    z-index: 99999;
-    left: 80%;
-    transform: translate(10px, -35px);
 }
 
 .col-70 {

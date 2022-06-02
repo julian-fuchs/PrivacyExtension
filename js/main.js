@@ -101,9 +101,8 @@ function toggleEmoji(selector, category, name, value) {
     $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
 
     if (isRec) {
-        console.log(`#heart-${name}`);
-        $(`#heart-${name}`).toggleClass('d-none');
-        $(`#heart-${name}`).toggleClass('animating');
+        $(`.heart`).toggleClass('d-none');
+        $(`.heart`).toggleClass('animating');
     }
 }
 
