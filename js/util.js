@@ -55,10 +55,10 @@ function addIssue(header, name, severity, info) {
     const container = $('#issue-list');
     const row = $('<tr></tr>');
     const issueCol = $(`<td class="text-start">${name}</td>`);
-    const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
     const infoCol = $(`<th><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></th>`);
+    const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
     row.append(issueCol);
-    row.append(statusCol);
     row.append(infoCol);
+    row.append(statusCol);
     container.append(row);
 }
