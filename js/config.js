@@ -102,7 +102,7 @@ const chromeConfig = {
 const securityHeaders = {
     "x-frame-options": {
         warningLevel: 'high',
-        info: 'rotection of web applications against clickjacking. It instructs the browser whether the content can be displayed within frames.'
+        info: 'Protection of web applications against clickjacking. It instructs the browser whether the content can be displayed within frames.'
     },
     "content-security-policy": {
         warningLevel: 'high',
