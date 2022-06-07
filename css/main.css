@@ -99,8 +99,28 @@ th {
     top: 15%;
 }
 
-#info-btn:hover {
+#info-btn:hover,
+#x-btn:hover {
     color: #5f8f8b;
+}
+
+#close-btn {
+    background-color: #5f8f8b;
+    border-color: #5f8f8b;
+}
+
+#close-btn:hover {
+    background-color: #7EA5A2;
+}
+
+#info-btn:focus,
+#info-btn:active,
+#x-btn:focus,
+#x-btn:active,
+#close-btn:focus,
+#close-btn:active {
+    outline: none !important;
+    box-shadow: none;
 }
 
 .dark-mode {
