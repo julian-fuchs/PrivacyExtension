@@ -29,51 +29,52 @@ function setGrade(data) {
     $('.tosdr-anchor').attr('href', `https://tosdr.org/en/service/${data.id}`);
 }
 
-function findMatchingResult(services, domain) {
-    for(let service of services) {
-        if (service.urls !== undefined && service.urls.includes(domain)) {
-            return service;
-        }
-    }
-    return null;
-}
-
-function loadGrade(domain) {
-    chrome.storage.local.get([domain], data => {
-        if (typeof data[domain] !== 'undefined') {
-            setGrade(data[domain]);
-        } else {
-            $.get(`https://api.tosdr.org/search/v4/?query=${domain}`, (response) => {
-                if (response.parameters.services.length === 0) {
-                    console.log('website not found');
-                    return;
+function verifyHeader(domain) {
+    chrome.storage.local.get([`${domain}-header`], data => {
+        if (typeof data[`${domain}-header`] !== 'undefined') {
+            console.log(`found header for ${domain} in storage`)
+            const headerMap = data[`${domain}-header`].header;
+            for(const [header, setting] of Object.entries(securityHeaders)) {
+                if (header in headerMap) {
+                    addIssue(header, `found header ${header}`, 'low', setting.info);
+                } else {
+                    addIssue(header, `missing header ${header}`, setting.warningLevel, setting.info);
                 }
-                let service = findMatchingResult(response.parameters.services, domain);
-                if (service === null) {
-                    console.log('matching service on tosdr.org not found');
-                    return;
-                }
-                let data = { name: service.name, rating: service.rating, id: service.id};
-                setGrade(data);
-                chrome.storage.local.set({ [domain]: data }, function () {
-                    console.log(`saved ${domain} - ${service.rating.letter}`);
-                });
-            });
+            };
         }
     });
 }
 
+function verifyCookies(domain) {
+    chrome.cookies.getAll({domain: domain}, (cookies) => {
+        cookies.forEach((cookie) => {
+            for(const [attribute, setting] of Object.entries(cookieAttributes)) {
+                if (!cookie[attribute]) {
+                    addIssue(attribute, `missing ${attribute} for ${cookie.name}`, setting.warningLevel, setting.info);
+                }
+            }
+        });
+    });
+}
+
+
+function getDomain(url) {
+    let urlobj = new URL(url);
+    let parsed = psl.parse(urlobj.hostname);
+    return parsed.domain;
+}
+
 function loadInfo() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        let activeTab = tabs[0];
-        let url = new URL(activeTab.url);
-        let pattern = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/;
-        let matches = activeTab.url.match(pattern);
-        if (matches !== 'undefined' && matches.length > 1) {
-            let domain = matches[1];
+        let domain = getDomain(tabs[0].url);
+        if (domain !== 'undefined') {
             $('.tab-name').text(domain);
-            loadGrade(domain);
-            verifyHeader(domain, url);
+            chrome.storage.local.get([domain], data => {
+                if (typeof data[domain] !== 'undefined') {
+                    setGrade(data[domain]);
+                }
+            });
+            verifyHeader(domain);
             verifyCookies(domain);
         } else {
             $('.tab-name').text('No website found');

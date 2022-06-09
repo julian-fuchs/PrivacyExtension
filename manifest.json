@@ -14,5 +14,8 @@
         "48": "img/logo-32x32.png"
     },
     "host_permissions": ["*://*/*"],
+    "background": {
+        "service_worker": "js/background.js"
+    },
     "permissions": ["tabs", "privacy", "cookies", "browsingData", "webRequest", "storage"]
 }
