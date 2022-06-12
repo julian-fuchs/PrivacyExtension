@@ -94,14 +94,14 @@ const getSetting = async (category, name) => {
     });
 }
 
-function toggleEmoji(selector, category, name, value) {
+function toggleEmoji(selector, category, name, value, isOriginal) {
     let setting = chromeConfig[category][name];
     const isRec = setting.recommendedValue === value;
     const severity = (isRec) ? 'low' : setting.warningLevel;
     $(selector).attr('class', severityToColor[severity]);
     $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
 
-    if (isRec) {
+    if (isRec && isOriginal) {
         $(`.heart`).toggleClass('d-none');
         $(`.heart`).toggleClass('animating');
     }
@@ -113,9 +113,10 @@ function addCheckboxListener() {
         let category = target.attr('data-category');
         let setting = target.attr('data-setting');
         let value = target.is(':checked');
+        let isOriginal = event.hasOwnProperty('originalEvent');
         chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
-            toggleEmoji(`#emoji-${setting}`, category, setting, value);
+            toggleEmoji(`#emoji-${setting}`, category, setting, value, isOriginal);
             trackingPush(['_trackEvent', `${category}.${setting}`, 'clicked',  `${value}`]);
         });
     })
@@ -139,7 +140,7 @@ function addProfileListener() {
         }       
         // save profile to localstorage
         chrome.storage.local.set({ profile: profile }, function () {
-            console.log(`saved ${profile}`);
+            console.log(`set profile to ${profile}`);
         });
     });
 
@@ -171,7 +172,6 @@ async function loadSettings() {
         if (data.profile !== undefined) {
             console.log(`found profile in storage: ${data.profile}`);
             $(`#profileRadio-${data.profile}`).prop("checked", true);
-            $(`#profileRadio-${data.profile}`).trigger('change');
         }
     });
     addCheckboxListener();
