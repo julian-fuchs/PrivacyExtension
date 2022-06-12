@@ -151,7 +151,7 @@ const cookieAttributes = {
 };
 
 const profiles = {
-    none: {
+    default: {
         // defaults from https://developer.chrome.com/docs/extensions/reference/privacy/
         networkPredictionEnabled: true,
         alternateErrorPagesEnabled: true,

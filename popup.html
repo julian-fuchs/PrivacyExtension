@@ -78,17 +78,20 @@
                 <div class="profiles text-center pb-3 pt-3">
                     <h6 class="pb-2">Profiles</h6>
                     <div class="profile-group btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="profile-btn btn-check" name="profileRadio-none" data-profile="none" id="profileRadio-none" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="profileRadio-none">None</label>
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-default" data-profile="default" id="profileRadio-default" autocomplete="off">
+                        <label class="btn btn-outline-primary info-tooltip" for="profileRadio-default" data-name="tooltip-profile-default" data-bs-toggle="tooltip" title="Default profile, settings are enabled and disabled according to the Google Chrome defaults">Default</label>
 
                         <input type="radio" class="profile-btn btn-check" name="profileRadio-low" data-profile="low" id="profileRadio-low" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="profileRadio-low">Low</label>
+                        <label class="btn btn-outline-primary info-tooltip" for="profileRadio-low" data-name="tooltip-profile-low" data-bs-toggle="tooltip" title="Very lax profile, only the really important recommendations are required and applied">Low</label>
                         
                         <input type="radio" class="profile-btn btn-check" name="profileRadio-privacy" data-profile="privacy" id="profileRadio-privacy" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="profileRadio-privacy">Privacy</label>
+                        <label class="btn btn-outline-primary info-tooltip" for="profileRadio-privacy" data-name="tooltip-profile-privacy" data-bs-toggle="tooltip" title="Privacy orientated profile, all high-level recommendations are applied">Privacy</label>
                         
                         <input type="radio" class="profile-btn btn-check" name="profileRadio-strict" data-profile="strict" id="profileRadio-strict" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="profileRadio-strict">Strict</label>
+                        <label class="btn btn-outline-primary info-tooltip" for="profileRadio-strict" data-name="tooltip-profile-strict" data-bs-toggle="tooltip"  title="Very strict profile, every recommendation is a requirement and applied accordingly">Strict</label>
+
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-custom" data-profile="custom" id="profileRadio-custom" autocomplete="off" disabled>
+                        <label class="btn btn-outline-primary info-tooltip profile-custom-label" for="profileRadio-custom" data-name="tooltip-profile-custom" data-bs-toggle="tooltip" title="Profile to indicate that the current settings are customized and not matches other profiles completly">Custom</label>
                     </div>
                 </div>
                 <div class="heart d-none" id="heart"></div>
