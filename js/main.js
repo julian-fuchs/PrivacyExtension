@@ -67,7 +67,7 @@ function getDomain(url) {
 function loadInfo() {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
         let domain = getDomain(tabs[0].url);
-        if (domain !== 'undefined') {
+        if (domain !== undefined && domain !== null) {
             $('.tab-name').text(domain);
             chrome.storage.local.get([domain], data => {
                 if (typeof data[domain] !== 'undefined') {

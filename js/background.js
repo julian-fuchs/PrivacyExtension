@@ -79,7 +79,7 @@ function loadInfo(tabUrl) {
     }
     let parsedDomain = parseUrl(tabUrl);
     let domain = parsedDomain.domain;
-    if (domain !== 'undefined') {
+    if (domain !== undefined) {
         loadGrade(domain, domain.sld);
     } else {
         console.log(`website not found: ${url}`);
