@@ -75,6 +75,22 @@
 
             </div>
             <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+                <div class="profiles text-center pb-3 pt-3">
+                    <h6 class="pb-2">Profiles</h6>
+                    <div class="profile-group btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-none" data-profile="none" id="profileRadio-none" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="profileRadio-none">None</label>
+
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-low" data-profile="low" id="profileRadio-low" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="profileRadio-low">Low</label>
+                        
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-privacy" data-profile="privacy" id="profileRadio-privacy" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="profileRadio-privacy">Privacy</label>
+                        
+                        <input type="radio" class="profile-btn btn-check" name="profileRadio-strict" data-profile="strict" id="profileRadio-strict" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="profileRadio-strict">Strict</label>
+                    </div>
+                </div>
                 <div class="heart d-none" id="heart"></div>
                 <table id="setting-container">
                 </table>

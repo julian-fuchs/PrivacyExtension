@@ -128,6 +128,30 @@ function trackNavigation() {
     });
 }
 
+function addProfileListener() {
+    $('input[type=radio].profile-btn').change((event) => {
+        let target = $(event.target);
+        let profile = target.attr('data-profile');
+        let profileSettings = profiles[profile];
+        for (const [setting, value] of Object.entries(profileSettings)) {
+            $(`#checkbox-${setting}`).prop('checked', value);
+            $(`#checkbox-${setting}`).trigger('change');
+        }       
+        // save profile to localstorage
+        chrome.storage.local.set({ profile: profile }, function () {
+            console.log(`saved ${profile}`);
+        });
+    });
+
+    $('.btn-outline-primary').click(event => {
+        let target = $(event.target);
+        let value = target.attr('for');
+        $('.profile-group > input').prop('checked', false);
+        $(`#${value}`).prop('checked', true);
+        $(`#${value}`).trigger('change');
+        });
+}
+
 async function loadSettings() {
     console.log('loading settings');
     let keys = Object.keys(chromeConfig);
@@ -143,9 +167,17 @@ async function loadSettings() {
             }
         }
     }
+    chrome.storage.local.get(["profile"], data => {
+        if (data.profile !== undefined) {
+            console.log(`found profile in storage: ${data.profile}`);
+            $(`#profileRadio-${data.profile}`).prop("checked", true);
+            $(`#profileRadio-${data.profile}`).trigger('change');
+        }
+    });
     addCheckboxListener();
     trackToolTip();
     addHeartEvents();
+    addProfileListener();
 }
 
 function trackToolTip() {

@@ -334,3 +334,47 @@ th {
 .chrome-setting-checkbox {
     cursor: pointer;
 }
+
+.profile-btn {
+    height: 30px;
+    font-size: 12px;
+}
+
+.btn-outline-primary {
+    color: #7EA5A2;
+    border-color: #7EA5A2;
+}
+
+.btn-outline-primary:hover {
+    color: white;
+    background-color: #777777;
+    border-color: #7EA5A2;
+}
+
+.btn-outline-primary:checked {
+    color: white;
+    background-color: #7EA5A2;
+    border-color: #7EA5A2;
+}
+
+.btn-check:focus+.btn-outline-primary,.btn-outline-primary:focus {
+    box-shadow: 0 0 0 .25rem rgba(95, 143, 139, 0.6);
+    border-color: #7EA5A2;
+}
+
+.btn-check:active+.btn-outline-primary,.btn-check:checked+.btn-outline-primary,.btn-outline-primary.active,.btn-outline-primary.dropdown-toggle.show,.btn-outline-primary:active {
+    color: #fff;
+    background-color: #7EA5A2;
+    border-color: #7EA5A2;
+}
+
+.btn-check:active+.btn-outline-primary:focus,.btn-check:checked+.btn-outline-primary:focus,.btn-outline-primary.active:focus,.btn-outline-primary.dropdown-toggle.show:focus,.btn-outline-primary:active:focus {
+    box-shadow: 0 0 0 .25rem rgba(95, 143, 139, 0.6);
+    border-color: #7EA5A2;
+}
+
+.btn-outline-primary.disabled,.btn-outline-primary:disabled {
+    color: #7EA5A2;
+    background-color: transparent;
+    border-color: #7EA5A2;
+}

@@ -149,3 +149,83 @@ const cookieAttributes = {
         info: 'This attributes tells the browser to only send the cookie if the connection is HTTPS. This protects the cookie from being passed in unencrypted requests.'
     }
 };
+
+const profiles = {
+    none: {
+        // defaults from https://developer.chrome.com/docs/extensions/reference/privacy/
+        networkPredictionEnabled: true,
+        alternateErrorPagesEnabled: true,
+        autofillAddressEnabled: true,
+        autofillEnabled: true,
+        autofillCreditCardEnabled: true,
+        passwordSavingEnabled: true,
+        safeBrowsingEnabled: true,
+        safeBrowsingExtendedReportingEnabled: false,
+        searchSuggestEnabled: true,
+        spellingServiceEnabled: false,
+        translationServiceEnabled: true,
+        doNotTrackEnabled: false,
+        hyperlinkAuditingEnabled: true,
+        privacySandboxEnabled: true,
+        protectedContentEnabled: true,
+        referrersEnabled: true,
+        thirdPartyCookiesAllowed: true
+    },
+    low: {
+        networkPredictionEnabled: false,
+        alternateErrorPagesEnabled: false,
+        autofillAddressEnabled: false,
+        autofillEnabled: false,
+        autofillCreditCardEnabled: false,
+        passwordSavingEnabled: false,
+        safeBrowsingEnabled: true,
+        safeBrowsingExtendedReportingEnabled: false,
+        searchSuggestEnabled: true,
+        spellingServiceEnabled: true,
+        translationServiceEnabled: true,
+        doNotTrackEnabled: false,
+        hyperlinkAuditingEnabled: false,
+        privacySandboxEnabled: false,
+        protectedContentEnabled: true,
+        referrersEnabled: true,
+        thirdPartyCookiesAllowed: true
+    },
+    privacy: {
+        networkPredictionEnabled: false,
+        alternateErrorPagesEnabled: false,
+        autofillAddressEnabled: false,
+        autofillEnabled: false,
+        autofillCreditCardEnabled: false,
+        passwordSavingEnabled: false,
+        safeBrowsingEnabled: true,
+        safeBrowsingExtendedReportingEnabled: false,
+        searchSuggestEnabled: true,
+        spellingServiceEnabled: true,
+        translationServiceEnabled: true,
+        doNotTrackEnabled: false,
+        hyperlinkAuditingEnabled: false,
+        privacySandboxEnabled: true,
+        protectedContentEnabled: true,
+        referrersEnabled: false,
+        thirdPartyCookiesAllowed: true
+    },
+    strict: {
+        networkPredictionEnabled: chromeConfig.network.networkPredictionEnabled.recommendedValue,
+        alternateErrorPagesEnabled: chromeConfig.services.alternateErrorPagesEnabled.recommendedValue,
+        autofillAddressEnabled: chromeConfig.services.autofillAddressEnabled.recommendedValue,
+        autofillEnabled: chromeConfig.services.autofillEnabled.recommendedValue,
+        autofillCreditCardEnabled: chromeConfig.services.autofillCreditCardEnabled.recommendedValue,
+        passwordSavingEnabled: chromeConfig.services.passwordSavingEnabled.recommendedValue,
+        safeBrowsingEnabled: chromeConfig.services.safeBrowsingEnabled.recommendedValue,
+        safeBrowsingExtendedReportingEnabled: chromeConfig.services.safeBrowsingExtendedReportingEnabled.recommendedValue,
+        searchSuggestEnabled: chromeConfig.services.searchSuggestEnabled.recommendedValue,
+        spellingServiceEnabled: chromeConfig.services.spellingServiceEnabled.recommendedValue,
+        translationServiceEnabled: chromeConfig.services.translationServiceEnabled.recommendedValue,
+        doNotTrackEnabled: chromeConfig.websites.doNotTrackEnabled.recommendedValue,
+        hyperlinkAuditingEnabled: chromeConfig.websites.hyperlinkAuditingEnabled.recommendedValue,
+        privacySandboxEnabled: chromeConfig.websites.privacySandboxEnabled.recommendedValue,
+        protectedContentEnabled: chromeConfig.websites.protectedContentEnabled.recommendedValue,
+        referrersEnabled: chromeConfig.websites.referrersEnabled.recommendedValue,
+        thirdPartyCookiesAllowed: chromeConfig.websites.thirdPartyCookiesAllowed.recommendedValue
+    }
+}
