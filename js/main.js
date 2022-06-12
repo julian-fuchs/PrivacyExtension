@@ -114,6 +114,15 @@ function addCheckboxListener() {
         let setting = target.attr('data-setting');
         let value = target.is(':checked');
         let isOriginal = event.hasOwnProperty('originalEvent');
+        if (isOriginal) {
+            chrome.storage.local.set({ profile: 'custom' }, function () {
+                console.log(`overwrite profile to custom`);
+            });
+            $('.profile-group > input').prop('checked', false);
+            $('#profileRadio-custom').prop('checked', true);
+            $('#rofileRadio-custom').trigger('change');
+        }
+        console.log(event);
         chrome.privacy[category][setting].set({ value: value }, () => {
             console.log(`successfully set setting ${category}.${setting} to ${value}`);
             toggleEmoji(`#emoji-${setting}`, category, setting, value, isOriginal);
@@ -133,15 +142,18 @@ function addProfileListener() {
     $('input[type=radio].profile-btn').change((event) => {
         let target = $(event.target);
         let profile = target.attr('data-profile');
+        // save profile to localstorage
+        chrome.storage.local.set({ profile: profile }, function () {
+            console.log(`set profile to ${profile}`);
+        });
+        if (profile === 'custom') {
+            return;
+        }
         let profileSettings = profiles[profile];
         for (const [setting, value] of Object.entries(profileSettings)) {
             $(`#checkbox-${setting}`).prop('checked', value);
             $(`#checkbox-${setting}`).trigger('change');
         }       
-        // save profile to localstorage
-        chrome.storage.local.set({ profile: profile }, function () {
-            console.log(`set profile to ${profile}`);
-        });
     });
 
     $('.btn-outline-primary').click(event => {
@@ -150,7 +162,7 @@ function addProfileListener() {
         $('.profile-group > input').prop('checked', false);
         $(`#${value}`).prop('checked', true);
         $(`#${value}`).trigger('change');
-        });
+    });
 }
 
 async function loadSettings() {
@@ -183,7 +195,7 @@ function addEventListeners() {
     addHeartEvents();
     addProfileListener();
     trackNavigation();
-    $('i.info-tooltip').tooltip({
+    $('.info-tooltip').tooltip({
         animated: 'fade',
         placement: 'bottom',
         trigger: 'hover focus'
@@ -191,7 +203,7 @@ function addEventListeners() {
 }
 
 function trackToolTip() {
-    $('i.info-tooltip').hover((event) => {
+    $('.info-tooltip').hover((event) => {
         if (event.type == 'mouseenter') {
             let target = $(event.target);
             trackingPush(['_trackEvent', target.attr('data-name'), 'hovered']);

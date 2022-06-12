@@ -378,3 +378,7 @@ th {
     background-color: transparent;
     border-color: #7EA5A2;
 }
+
+label.btn.btn-outline-primary.info-tooltip.profile-custom-label {
+    pointer-events: auto;
+}
