@@ -174,10 +174,20 @@ async function loadSettings() {
             $(`#profileRadio-${data.profile}`).prop("checked", true);
         }
     });
+    addEventListeners();
+}
+
+function addEventListeners() {
     addCheckboxListener();
     trackToolTip();
     addHeartEvents();
     addProfileListener();
+    trackNavigation();
+    $('i.info-tooltip').tooltip({
+        animated: 'fade',
+        placement: 'bottom',
+        trigger: 'hover focus'
+    });
 }
 
 function trackToolTip() {
@@ -204,13 +214,5 @@ function addHeartEvents() {
 $(function () {
     loadInfo();
     loadSettings();
-    // TODO: trigger 'click' doesnt seem to work
-    // only hover is fine or need to investigate
-    $('[data-toggle-bs="tooltip"]').tooltip({
-        animated: 'fade',
-        placement: 'bottom',
-        trigger: 'click hover focus'
-    });
-    trackNavigation();
 });
 
