@@ -29,7 +29,7 @@ const chromeConfig = {
             warningLevel: 'high'
         },
         autofillCreditCardEnabled: {
-            info: 'Chrome has knowledge about your credit card, but uses an "alias" to keep your data hidden.',
+            info: 'Chrome has knowledge about your credit card, but uses an \'alias\' to keep your data hidden.',
             recommendedValue: false,
             warningLevel: 'high'
         },
@@ -71,7 +71,7 @@ const chromeConfig = {
             warningLevel: 'medium'
         },
         hyperlinkAuditingEnabled: {
-            info: 'This service tracks link klicks on sites.',
+            info: 'This service tracks link clicks on sites.',
             recommendedValue: false,
             warningLevel: 'high'
         },
