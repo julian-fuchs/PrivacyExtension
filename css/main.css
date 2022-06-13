@@ -382,3 +382,8 @@ th {
 label.btn.btn-outline-primary.info-tooltip.profile-custom-label {
     pointer-events: auto;
 }
+
+#issue-container tr {
+    width: 100%;
+    line-height: 30px;
+}

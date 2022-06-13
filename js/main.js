@@ -36,9 +36,9 @@ function verifyHeader(domain) {
             const headerMap = data[`${domain}-header`].header;
             for(const [header, setting] of Object.entries(securityHeaders)) {
                 if (header in headerMap) {
-                    addIssue(header, `found header ${header}`, 'low', setting.info);
+                    addIssue(header, 'Found Headers', header, 'low', setting.info);
                 } else {
-                    addIssue(header, `missing header ${header}`, setting.warningLevel, setting.info);
+                    addIssue(header, 'Missing Headers', header, setting.warningLevel, setting.info);
                 }
             };
         }
@@ -50,7 +50,7 @@ function verifyCookies(domain) {
         cookies.forEach((cookie) => {
             for(const [attribute, setting] of Object.entries(cookieAttributes)) {
                 if (!cookie[attribute]) {
-                    addIssue(attribute, `missing ${attribute} for ${cookie.name}`, setting.warningLevel, setting.info);
+                    addIssue(attribute, `Missing ${attribute}`, cookie.name, setting.warningLevel, setting.info);
                 }
             }
         });

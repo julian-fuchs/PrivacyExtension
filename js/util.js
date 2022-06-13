@@ -51,8 +51,24 @@ const severityToEmoji = {
     high: "bi-emoji-angry-fill"
 }
 
-function addIssue(header, name, severity, info) {
-    const container = $('#issue-list');
+function addIssueCategory(name) {
+    const container = $('#issue-container');
+    const thead = $('<thead></thead>');
+    const thCol = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
+    thead.append(thCol);
+    for(let i = 0; i < 2; i++) {
+        thead.append($(`<th class="col-10"></th>`));
+    }
+    container.append(thead);
+    let tbody = $(`<tbody class="${name.replaceAll(" ", "-")}"></tbody>`);
+    container.append(tbody);
+}
+
+function addIssue(header, category, name, severity, info) {
+    const container = $(`#issue-container > tbody.${category.replaceAll(" ", "-")}`);
+    if (container.length === 0) {
+        addIssueCategory(category);
+    }
     const row = $('<tr></tr>');
     const issueCol = $(`<td class="text-start">${name}</td>`);
     const infoCol = $(`<th><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></th>`);
