@@ -40,7 +40,7 @@ function verifyHeader(domain) {
                 } else {
                     addIssue(header, 'Missing Headers', header, setting.warningLevel, setting.info);
                 }
-            };
+            }
         }
     });
 }
