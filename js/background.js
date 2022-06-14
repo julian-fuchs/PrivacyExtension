@@ -19,7 +19,8 @@ chrome.webRequest.onHeadersReceived.addListener((details) => {
     if (details.type == 'main_frame') {
         let domain = parseUrl(details.url)?.domain;
         if (domain === undefined) return;
-        chrome.storage.local.set({[`${domain}-header`]: {header: details.responseHeaders}}, () => {
+        var responseHeaderMap = details.responseHeaders.reduce((obj, item) => (obj[item.name] = item.value, obj) ,{});
+        chrome.storage.local.set({[`${domain}-header`]: {header: responseHeaderMap}}, () => {
             console.log(`saved header for ${domain}`);
         });
     }
