@@ -71,7 +71,7 @@ function addIssue(header, category, name, severity, info) {
     }
     const row = $('<tr></tr>');
     const issueCol = $(`<td class="text-start">${name}</td>`);
-    const infoCol = $(`<th><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></th>`);
+    const infoCol = $(`<td><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></td>`);
     const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
     row.append(issueCol);
     row.append(infoCol);

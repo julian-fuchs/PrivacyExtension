@@ -26,6 +26,16 @@ a:hover {
     max-height: 500px;
 }
 
+#dashboard {
+    padding-right: 3px;
+}
+
+#dashboard,
+#details,
+#settings {
+    padding-left: 3px;
+}
+
 #details,
 #settings {
     font-size: 0.85em;
@@ -391,7 +401,14 @@ label.btn.btn-outline-primary.info-tooltip.profile-custom-label {
     pointer-events: auto;
 }
 
-#issue-container tr {
+#issue-container {
     width: 100%;
+}
+
+#issue-container tr {
     line-height: 30px;
+}
+
+th {
+    color: #777777;
 }
