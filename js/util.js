@@ -84,6 +84,8 @@ function addDetail(header, category, name, found, severity, info) {
     const container = $(`#detail-container > tbody.${category.replaceAll(" ", "-")}`);
     if (container.length === 0) {
         addDetailCategory(category);
+        addDetail(header, category, name, found, severity, info);
+        return;
     }
     const row = $('<tr></tr>');
     const foundCol = $(`<td class="col-10"><span class="${foundToColor[found]}"><i class="bi ${foundToEmoji[found]}"></i></span></td>`);
