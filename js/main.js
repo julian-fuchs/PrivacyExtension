@@ -1,4 +1,4 @@
-const trackingEnabled = false;
+const trackingEnabled = true;
 
 if (trackingEnabled) {
     var _gaq = _gaq || [];
