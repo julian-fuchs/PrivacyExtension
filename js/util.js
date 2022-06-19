@@ -8,6 +8,28 @@ function capitalizeFirstLetters(string, separator) {
     }).join(separator);
 }
 
+const severityToColor = {
+    low: "text-success",
+    medium: "text-warning",
+    high: "text-danger"
+}
+
+const severityToEmoji = {
+    low: "bi-emoji-laughing-fill",
+    medium: "bi-emoji-neutral-fill",
+    high: "bi-emoji-angry-fill"
+}
+
+const foundToColor = {
+    true: "text-success",
+    false: "text-danger"
+}
+
+const foundToEmoji = {
+    true: "bi-check-lg",
+    false: "bi-x-lg"
+}
+
 function addSettingCategory(name) {
     const container = $('#setting-container');
     const thead = $('<thead></thead>');
@@ -43,28 +65,6 @@ function addSetting(category, name, state, recommendation, info) {
     row.append(recCol);
 
     container.append(row);
-}
-
-const severityToColor = {
-    low: "text-success",
-    medium: "text-warning",
-    high: "text-danger"
-}
-
-const severityToEmoji = {
-    low: "bi-emoji-laughing-fill",
-    medium: "bi-emoji-neutral-fill",
-    high: "bi-emoji-angry-fill"
-}
-
-const foundToColor = {
-    true: "text-success",
-    false: "text-danger"
-}
-
-const foundToEmoji = {
-    true: "bi-check-lg",
-    false: "bi-x-lg"
 }
 
 function addDetailCategory(name) {

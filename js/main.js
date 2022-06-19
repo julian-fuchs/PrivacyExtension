@@ -78,7 +78,7 @@ function loadInfo() {
             verifyHeader(domain);
             verifyCookies(domain);
         } else {
-            $('.tab-name').text('No website found');
+            $('.tab-name').text('No website found!');
         }
     });
 }
