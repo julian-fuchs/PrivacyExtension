@@ -100,13 +100,17 @@ const chromeConfig = {
 
 // source: https://owasp.org/www-project-secure-headers/#div-headers
 const securityHeaders = {
-    "x-frame-options": {
-        warningLevel: 'high',
-        info: 'Protection of web applications against clickjacking. It instructs the browser whether the content can be displayed within frames.'
-    },
     "content-security-policy": {
         warningLevel: 'high',
         info: 'CSP prevents a wide range of attacks, including cross-site scripting and other cross-site injections.'
+    },
+    "permissions-policy": {
+        warningLevel: 'medium',
+        info: 'HTTP header can be used in the response (server to client) to communicate the permissions policy that should be enforced by the client.'
+    },
+    "referrer-policy": {
+        warningLevel: 'high',
+        info: 'Header governs which referrer information, sent in the Referer header, should be included with requests made.'
     },
     "strict-transport-security": {
         warningLevel: 'high',
@@ -116,17 +120,13 @@ const securityHeaders = {
         warningLevel: 'medium',
         info: 'Header will prevent the browser from interpreting files as a different MIME type to what is specified in the Content-Type HTTP header'
     },
+    "x-frame-options": {
+        warningLevel: 'high',
+        info: 'Protection of web applications against clickjacking. It instructs the browser whether the content can be displayed within frames.'
+    },
     "x-permitted-cross-domain-policies": {
         warningLevel: 'high',
         info: 'A cross-domain policy file is an XML document that grants a web client permission to handle data across domains'
-    },
-    "referrer-policy": {
-        warningLevel: 'high',
-        info: 'Header governs which referrer information, sent in the Referer header, should be included with requests made.'
-    },
-    "Permissions-Policy": {
-        warningLevel: 'medium',
-        info: 'HTTP header can be used in the response (server to client) to communicate the permissions policy that should be enforced by the client.'
     }
 };
 

@@ -2,6 +2,12 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function capitalizeFirstLetters(string, separator) {
+    return string.split(separator).map(function(word) {
+        return word[0].toUpperCase() + word.slice(1);
+    }).join(separator);
+}
+
 function addSettingCategory(name) {
     const container = $('#setting-container');
     const thead = $('<thead></thead>');
@@ -51,10 +57,20 @@ const severityToEmoji = {
     high: "bi-emoji-angry-fill"
 }
 
-function addIssueCategory(name) {
-    const container = $('#issue-container');
+const foundToColor = {
+    true: "text-success",
+    false: "text-danger"
+}
+
+const foundToEmoji = {
+    true: "bi-check-lg",
+    false: "bi-x-lg"
+}
+
+function addDetailCategory(name) {
+    const container = $('#detail-container');
     const thead = $('<thead></thead>');
-    const thCol = $(`<th class="text-start">${capitalizeFirstLetter(name)}</th>`);
+    const thCol = $(`<th colspan="2" class="text-start">${capitalizeFirstLetters(name, " ")}</th>`);
     thead.append(thCol);
     for(let i = 0; i < 2; i++) {
         thead.append($(`<th class="col-10"></th>`));
@@ -64,16 +80,18 @@ function addIssueCategory(name) {
     container.append(tbody);
 }
 
-function addIssue(header, category, name, severity, info) {
-    const container = $(`#issue-container > tbody.${category.replaceAll(" ", "-")}`);
+function addDetail(header, category, name, found, severity, info) {
+    const container = $(`#detail-container > tbody.${category.replaceAll(" ", "-")}`);
     if (container.length === 0) {
-        addIssueCategory(category);
+        addDetailCategory(category);
     }
     const row = $('<tr></tr>');
-    const issueCol = $(`<td class="text-start">${name}</td>`);
+    const foundCol = $(`<td class="col-10"><span class="${foundToColor[found]}"><i class="bi ${foundToEmoji[found]}"></i></span></td>`);
+    const detailCol = $(`<td class="text-start">${capitalizeFirstLetters(name, "-")}</td>`);
     const infoCol = $(`<td><i class="bi bi-info-circle info-tooltip" data-name="tooltip-${header}" data-bs-toggle="tooltip" title="${info}"></i></td>`);
     const statusCol = $(`<td><span class="${severityToColor[severity]}"><i class="bi ${severityToEmoji[severity]}"></i></span></td>`);
-    row.append(issueCol);
+    row.append(foundCol);
+    row.append(detailCol);
     row.append(infoCol);
     row.append(statusCol);
     container.append(row);

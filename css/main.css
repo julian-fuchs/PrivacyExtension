@@ -401,14 +401,14 @@ label.btn.btn-outline-primary.info-tooltip.profile-custom-label {
     pointer-events: auto;
 }
 
-#issue-container {
+#detail-container {
     width: 100%;
 }
 
-#issue-container tr {
+#detail-container tr {
     line-height: 30px;
 }
 
 th {
-    color: #777777;
+    color: #5f8f8b;
 }

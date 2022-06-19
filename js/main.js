@@ -36,9 +36,9 @@ function verifyHeader(domain) {
             const headerMap = data[`${domain}-header`].header;
             for(const [header, setting] of Object.entries(securityHeaders)) {
                 if (header in headerMap) {
-                    addIssue(header, 'Found Headers', header, 'low', setting.info);
+                    addDetail(header, 'HTTP Headers', header, true,'low', setting.info);
                 } else {
-                    addIssue(header, 'Missing Headers', header, setting.warningLevel, setting.info);
+                    addDetail(header, 'HTTP Headers', header, false, setting.warningLevel, setting.info);
                 }
             }
         }
@@ -49,14 +49,15 @@ function verifyCookies(domain) {
     chrome.cookies.getAll({domain: domain}, (cookies) => {
         cookies.forEach((cookie) => {
             for(const [attribute, setting] of Object.entries(cookieAttributes)) {
-                if (!cookie[attribute]) {
-                    addIssue(attribute, `Missing ${attribute}`, cookie.name, setting.warningLevel, setting.info);
+                if (cookie[attribute]) {
+                    addDetail(attribute, `${attribute} Attribute`, cookie.name, true, 'low', setting.info);
+                } else {
+                    addDetail(attribute, `${attribute} Attribute`, cookie.name, false, setting.warningLevel, setting.info);
                 }
             }
         });
     });
 }
-
 
 function getDomain(url) {
     let urlobj = new URL(url);
@@ -227,4 +228,3 @@ $(function () {
     loadInfo();
     loadSettings();
 });
-
