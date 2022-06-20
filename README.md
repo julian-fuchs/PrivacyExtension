@@ -14,6 +14,6 @@ Currently, there are two ways to install this extension:
 
 ![Details](https://i.imgur.com/guVLWuG.gif)
 
-![Profiles](https://i.imgur.com/tQOymNs.gif)
+![Profiles](https://i.imgur.com/pW0y5v3.gif)
 
-![Settings](https://i.imgur.com/fdZmttA.gif)
+![Settings](https://i.imgur.com/zsFnY5m.gif)

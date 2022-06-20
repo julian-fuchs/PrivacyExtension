@@ -190,7 +190,7 @@ const profiles = {
         referrersEnabled: true,
         thirdPartyCookiesAllowed: true
     },
-    privacy: {
+    medium: {
         networkPredictionEnabled: false,
         alternateErrorPagesEnabled: false,
         autofillAddressEnabled: false,
