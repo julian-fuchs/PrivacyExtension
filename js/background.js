@@ -3,14 +3,14 @@ importScripts('./psl.min.js');
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     console.log(changeInfo);
     if (changeInfo.url) {
-        loadInfo(changeInfo.url);
+        loadInfo(tab);
     }
 });
 
 chrome.tabs.onActivated.addListener((activeInfo) => {
     chrome.tabs.get(activeInfo.tabId, (tab) => {
         if (tab.url) {
-            loadInfo(tab.url);
+            loadInfo(tab);
         }
     });
 });
@@ -45,10 +45,10 @@ function tosDrCallback(json, domain, sld) {
     return true;
 }
 
-function loadGrade(domain, sld) {
+function loadGrade(domain, sld, tabId) {
     chrome.storage.local.get([domain], data => {
         if (typeof data[domain] !== 'undefined') {
-            setExtensionIcon(data[domain]);
+            setExtensionIcon(data[domain], tabId);
             return;
         }
         fetch(`https://api.tosdr.org/search/v4/?query=${domain}`).then((response) => {
@@ -59,7 +59,7 @@ function loadGrade(domain, sld) {
             response.json().then(json => {
                 let success = tosDrCallback(json, domain, sld);
                 if (!success) {
-                    chrome.action.setIcon({ path: `../img/logo-grade-f.png` });
+                    chrome.action.setIcon({path: `../img/logo-grade-f.png`, tabId: tabId});
                 }
             });                 
         });
@@ -73,26 +73,27 @@ function parseUrl(url) {
     return parsed;
 }
 
-function loadInfo(tabUrl) {
+function loadInfo(tab) {
+    let tabUrl = tab.url;
     if (tabUrl.startsWith('chrome://')) {
-        chrome.action.setIcon({ path: `../img/logo-32x32.png` });
+        chrome.action.setIcon({path: `../img/logo-32x32.png`, tabId: tab.id});
         return;
     }
     let parsedDomain = parseUrl(tabUrl);
     let domain = parsedDomain.domain;
     if (domain !== undefined) {
-        loadGrade(domain, domain.sld);
+        loadGrade(domain, domain.sld, tab.id);
     } else {
         console.log(`website not found: ${url}`);
-        chrome.action.setIcon({ path: `../img/logo-32x32.png` });
+        chrome.action.setIcon({path: `../img/logo-32x32.png`, tabId: tab.id});
     }
 }
 
-function setExtensionIcon(grade) {
+function setExtensionIcon(grade, tabId) {
     let letter = 'f';
     if (grade.rating.letter != 'N/A') {
         letter = grade.rating.letter.toLowerCase();
     }
     console.log(`change logo to: ../img/logo-grade-${letter}.png`);
-    chrome.action.setIcon({ path: `../img/logo-grade-${letter}.png` });
+    chrome.action.setIcon({path: `../img/logo-grade-${letter}.png`, tabId: tabId});
 }
