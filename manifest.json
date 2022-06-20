@@ -17,5 +17,5 @@
     "background": {
         "service_worker": "js/background.js"
     },
-    "permissions": ["tabs", "privacy", "cookies", "browsingData", "webRequest", "storage"]
+    "permissions": ["tabs", "privacy", "cookies", "webRequest", "storage"]
 }
