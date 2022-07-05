@@ -6,7 +6,7 @@ Awesome privacy extension for Chromium to keep **YOU** safe on the dangerous Web
 
 Currently, there are two ways to install this extension:
 - Visit and install the extension from the [Chrome Web Store]() 
-- Download the repository as a [ZIP file](https://gitlab.hpi.de/dominic.schaa/privacyextension/-/archive/main/privacyextension-main.zip), extract it and load the extension in a chrome-based browser using the developer mode
+- Download the repository as a [ZIP file](https://github.com/julian-fuchs/PrivacyExtension/archive/refs/heads/main.zip), extract it and load the extension in a chrome-based browser using the developer mode
 
 ## Screenshots
 
