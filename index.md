@@ -1,7 +1,7 @@
 # PRIVACY NOTICE
 **Last updated July 06, 2022**
 
-This privacy notice for PrivacyExtension (**"Company"**, **"we"**, **"us"**, or **"our"**), describes how and why we might collect, store, use, and/or share (**"process"**) your information when you use our services (**Services"**), such as when you:
+This privacy notice for PrivacyExtension (**"Company"**, **"we"**, **"us"**, or **"our"**), describes how and why we might collect, store, use, and/or share (**"process"**) your information when you use our services (**"Services"**), such as when you:
 
 - Download and use our browser extension (PrivacyExtension), or any other application of ours that links to this privacy notice
 - Engage with us in other related ways, including any sales, marketing, or events
