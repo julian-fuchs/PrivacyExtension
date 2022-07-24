@@ -15,9 +15,10 @@ function trackingPush(data) {
 function setGrade(data) {
     $('.tab-name').text(data.name);
     let grade = 'f';
+    let grades = {a: 'f', b: 'e', c: 'd', d: 'c', e: 'b', f: 'a'}
     if (data.rating.letter !== 'N/A') {
-        $('.grade').text(data.rating.letter);
-        grade = data.rating.letter.toLowerCase();
+        grade = grades[data.rating.letter.toLowerCase()];
+        $('.grade').text(grade.toUpperCase());
     }
     // simple approach: $('#circle').attr('class', `circle grade-${grade}`);
     // better? remove previous grade-class with regex and add new grade class
@@ -26,7 +27,7 @@ function setGrade(data) {
     });
     $('#circle').addClass(`grade-${grade}`);
 
-    $('.tosdr-anchor').attr('href', `https://tosdr.org/en/service/${data.id}`);
+    // $('.tosdr-anchor').attr('href', `https://tosdr.org/en/service/${data.id}`);
 }
 
 function verifyHeader(domain) {
@@ -98,7 +99,7 @@ const getSetting = async (category, name) => {
 function toggleEmoji(selector, category, name, value, isOriginal) {
     let setting = chromeConfig[category][name];
     const isRec = setting.recommendedValue === value;
-    const severity = (isRec) ? 'low' : setting.warningLevel;
+    const severity = (!isRec) ? 'low' : setting.warningLevel;
     $(selector).attr('class', severityToColor[severity]);
     $(`${selector} > i`).attr('class', `bi ${severityToEmoji[severity]}`);
 
@@ -177,7 +178,7 @@ async function loadSettings() {
             if (chrome.privacy?.[category_name]?.[setting] !== undefined) {
                 let value = await getSetting(category_name, setting);
                 let isRecValue = value === settingConfig.recommendedValue;
-                addSetting(category_name, setting, value, (isRecValue) ? 'low' : settingConfig.warningLevel, settingConfig.info);
+                addSetting(category_name, setting, value, (!isRecValue) ? 'low' : settingConfig.warningLevel, settingConfig.info);
             }
         }
     }

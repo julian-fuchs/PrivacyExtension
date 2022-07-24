@@ -14,84 +14,84 @@ const chromeConfig = {
     },
     services: {
         alternateErrorPagesEnabled: {
-            info: 'Chrome switches the visited-side error page with its own. Why would you need that?',
+            info: 'If enabled, Chrome uses a web service to help resolve navigation errors. This preference\'s value is a boolean, defaulting to true',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillAddressEnabled: {
-            info: 'Chrome saves the sides you visited, also possible usernames etc. That is a lot of data about you.',
+            info: 'If enabled, Chrome offers to automatically fill in addresses and other form data. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillEnabled: {
-            info: 'Chrome saves information about form data, for example shipping/login-information etc. Hence if you login somewhere Chrome takes notice of this.',
+            info: 'If enabled, Chrome offers to automatically fill in forms. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         autofillCreditCardEnabled: {
-            info: 'Chrome has knowledge about your credit card, but uses an \'alias\' to keep your data hidden.',
+            info: 'If enabled, Chrome offers to automatically fill in credit card forms. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         passwordSavingEnabled: {
-            info: 'Using a password manager is not a bad idea, but Chrome will store those in an unsafe way. Use a commercial password manager that encrypts your data!',
+            info: 'If enabled, the password manager will ask if you want to save passwords. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         safeBrowsingEnabled: {
-            info: 'The website you visit is being screened by chrome if it\'s malicious.',
+            info: 'If enabled, Chrome does its best to protect you from phishing and malware. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: true,
             warningLevel: 'high'
         },
         safeBrowsingExtendedReportingEnabled: {
-            info: 'Chrome sends Google information about pages it blocked for you.',
+            info: 'If enabled, Chrome will send additional information to Google when SafeBrowsing blocks a page, such as the content of the blocked page. This preference\'s value is a boolean, defaulting to false.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         searchSuggestEnabled: {
-            info: 'Your search habits are getting evaluated by Omnibox, a tool from Google.',
+            info: 'If enabled, Chrome sends the text you type into the Omnibox to your default search engine, which provides predictions of websites and searches that are likely completions of what you\'ve typed so far. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'medium'
         },
         spellingServiceEnabled: {
-            info: 'The third party AI webservice Sapling checks your writing. ',
+            info: 'If enabled, Chrome uses a web service to help correct spelling errors. This preference\'s value is a boolean, defaulting to false.',
             recommendedValue: false,
             warningLevel: 'medium'
         },
         translationServiceEnabled: {
-            info: 'Bablic translates your webpages and saves those.',
+            info: 'If enabled, Chrome offers to translate pages that aren\'t in a language you read. This preference\'s value is a boolean, defaulting to true.',
             recommendedValue: false,
             warningLevel: 'medium'
         }
     },
     websites: {
         doNotTrackEnabled: {
-            info: 'It sends a request to the visited side asking to no track you. It doesn\'t prohibit tracking.',
+            info: 'If enabled, Chrome sends \'Do Not Track\' (DNT: 1) header with your requests. The value of this preference is of type boolean, and the default value is false.',
             recommendedValue: true,
             warningLevel: 'medium'
         },
         hyperlinkAuditingEnabled: {
-            info: 'This service tracks link clicks on sites.',
+            info: 'If enabled, Chrome sends auditing pings when requested by a website (<a ping>). The value of this preference is of type boolean, and the default value is true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         privacySandboxEnabled: {
-            info: 'New feature of Chrome to improve privacy by acting as the third-party cookie. So third-party cookies of websites are replaced. ',
+            info: 'If enabled, the experimental Privacy Sandbox features are active. The value of this preference is of type boolean, and the default value is true.',
             recommendedValue: true,
             warningLevel: 'high'
         },
         protectedContentEnabled: {
-            info: 'With this you can view protected content. If you disabled this, some websites like Amazon Video or Netflix might not work.',
+            info: 'If enabled, Chrome provides a unique ID to plugins in order to run protected content. The value of this preference is of type boolean, and the default value is true.',
             recommendedValue: false,
             warningLevel: 'medium'
         },
         referrersEnabled: {
-            info: 'Sends referer headers with your request.',
+            info: 'If enabled, Chrome sends referer headers with your requests. Yes, the name of this preference doesn\'t match the misspelled header. No, we\'re not going to change it. The value of this preference is of type boolean, and the default value is true.',
             recommendedValue: false,
             warningLevel: 'high'
         },
         thirdPartyCookiesAllowed: {
-            info: 'Blocks sites you visit from directly giving you third-party cookies.',
+            info: 'If disabled, Chrome blocks third-party sites from setting cookies. The value of this preference is of type boolean, and the default value is true.',
             recommendedValue: false,
             warningLevel: 'medium'
         }

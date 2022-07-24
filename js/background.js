@@ -91,8 +91,9 @@ function loadInfo(tab) {
 
 function setExtensionIcon(grade, tabId) {
     let letter = 'f';
+    let grades = {a: 'f', b: 'e', c: 'd', d: 'c', e: 'b', f: 'a'}
     if (grade.rating.letter != 'N/A') {
-        letter = grade.rating.letter.toLowerCase();
+        letter = grades[grade.rating.letter.toLowerCase()];
     }
     console.log(`change logo to: ../img/logo-grade-${letter}.png`);
     chrome.action.setIcon({path: `../img/logo-grade-${letter}.png`, tabId: tabId});
