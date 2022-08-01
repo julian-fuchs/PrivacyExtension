@@ -2,7 +2,7 @@ const trackingEnabled = true;
 
 if (trackingEnabled) {
     var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-230603791-1']);
+    _gaq.push(['_setAccount', 'UA-230603791-2']);
     _gaq.push(['_trackPageview']);
 }
 
